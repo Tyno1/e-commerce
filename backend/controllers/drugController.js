@@ -109,6 +109,41 @@ module.exports.findByCategoryId = async (req, res) => {
   }
 };
 
+
+// find drug by name
+module.exports.findDrugsByName = async (req, res) => {
+  try {
+    const name = req.query.name; // Extract the search term from the query parameters
+
+    if (!name) {
+      // If no search term is provided, return a 400 Bad Request response
+      return res.status(400).json({ error: "No search term provided" });
+    }
+
+    // Construct a regular expression to match any occurrence of the word within the name
+    const regex = new RegExp(`.*${name}.*`, "i");
+
+    // Use the regular expression to find drugs matching the pattern
+    const drugs = await Drug.find({ name: { $regex: regex } })
+      .populate("category")
+      .exec();
+
+    // Check if any drugs were found
+    if (!drugs || drugs.length === 0) {
+      // If no drugs were found, return a 404 Not Found response
+      return res.status(404).json({ error: "No drugs found with the provided name" });
+    }
+
+    // If drugs were found, return them
+    res.json(drugs);
+  } catch (error) {
+    // Handle any errors that occur during the search
+    res.status(500).json({ error: "Error finding drugs by name: " + error.message });
+  }
+};
+
+
+
 // DELETE a drug by ID
 module.exports.deleteById = async (req, res) => {
   try {

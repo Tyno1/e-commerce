@@ -42,9 +42,9 @@ const ReviewUpload = ({ refresh, sendReview, user, id }) => {
     }
   };
   return (
-    <div className="add-review p-8">
+    <div className="add-review pt-8 w-full border-t border-teal-700">
       <form
-        className="w-full items-center mx-auto flex flex-col p-10 gap-8"
+        className="w-full items-center mx-auto flex flex-col gap-8"
         onSubmit={handlePostReview}
       >
         <div className="rating w-full flex flex-col gap-4">
@@ -58,13 +58,13 @@ const ReviewUpload = ({ refresh, sendReview, user, id }) => {
           />
         </div>
 
-        <div className="flex flex-col md:flex-row items-end w-full gap-4">
+        <div className="flex flex-col md:flex-row items-start md:items-end w-full gap-4">
           <div className="rating w-full flex flex-col gap-4">
             <label className="text-stone-100 text-2xl">Rating</label>
             <select
               onChange={handleChange}
               value={payload.rating}
-              className="w-40 p-4 rounded-xl text-teal-950"
+              className="w-full p-4 rounded-xl text-teal-950"
               name="rating"
             >
               <option value="1">1 Star</option>

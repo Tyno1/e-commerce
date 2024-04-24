@@ -7,6 +7,7 @@ export const DrugProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [drugs, setDrugs] = useState([]);
+  const [drug, setDrug] = useState("")
   const [pageNumber, setPageNumber] = useState(1);
   const [categoryId, setCategoryId] = useState("");
 
@@ -37,7 +38,7 @@ export const DrugProvider = ({ children }) => {
         .get("http://localhost:3000/drugs/" + id)
         .then((res) => {
           setLoading(false);
-          setDrugs(res.data);
+          setDrug(res.data);
           resolve(res);
         })
         .catch((err) => {
@@ -63,6 +64,7 @@ export const DrugProvider = ({ children }) => {
         pageNumber,
         setPageNumber,
         setCategoryId,
+        categoryId
       }}
     >
       {children}

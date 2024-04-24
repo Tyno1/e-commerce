@@ -2,14 +2,14 @@ import { IoMdStar } from "react-icons/io";
 
 const Review = ({ reviews, reviewLoading, reviewError }) => {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="w-full flex flex-col gap-10 mb-10">
       {reviewLoading && <div> ...loading</div>}
       {reviewError && <div> There's an error</div>}
       {reviews.length === 0 && <div className="mx-auto text-sm"> No reviews yet</div>}
       {reviews &&
         reviews.map((review) => (
-          <div key={review._id} className="flex flex-col gap-4">
-            <div className="user-details flex flex-row text-stone-100">
+          <div key={review._id} className="w-full flex flex-col gap-4">
+            <div className="w-full user-details flex flex-row text-stone-100">
               <div className="name-location-image flex items-center gap-6">
                 <div className="user-image w-14 h-14 rounded-3xl">
                   <img

@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import DrugCard from "./DrugCard";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const DrugList = ({
+const 
+DrugList = ({
   drugLoading,
   drugError,
   drugs,
@@ -29,11 +30,11 @@ const DrugList = ({
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
 
   return (
     <div className="druglist w-full h-full flex flex-row flex-wrap gap-4 p-2 items-center justify-around">
-      {drugLoading && (
+      {(drugLoading && (
         <ClipLoader
           color="#000000"
           loading={drugLoading}
@@ -41,12 +42,11 @@ const DrugList = ({
           aria-label="Loading Spinner"
           data-testid="loader"
         />
-      )}
-      {drugError && <div> {drugError?.message} </div>}
-      {drugs &&
-        drugs?.length > 0 &&
-        drugs?.map((drug) => <DrugCard key={drug._id} drug={drug} />)}
-
+      )) ||
+        (drugError && <div> {drugError?.message} </div>) ||
+        (drugs &&
+          drugs?.length > 0 &&
+          drugs?.map((drug) => <DrugCard key={drug._id} drug={drug} />))}
       <div className="mx-auto flex gap-10 my-10">
         <button
           onClick={handlePreviousPage}

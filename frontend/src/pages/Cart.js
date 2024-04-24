@@ -78,10 +78,10 @@ const Cart = () => {
             cartItem?.map((item, key) => (
               <div key={item?._id} className="flex flex-col border-b pb-5 mb-5">
                 <div className="item w-full flex gap-8 mb-10">
-                  <div className="image-container w-40 h-52 bg-gray-200">
+                  <div className="image-container w-[40%] h-52 bg-gray-200">
                     <img className="w-full h-full object-cover" src="" alt="" />
                   </div>
-                  <div className="item-detail flex flex-col gap-4">
+                  <div className="item-detail flex flex-col w-full gap-4">
                     <p className="text-sm md:text-medium">
                       Order ID: DD83HJSBE99029002
                     </p>
