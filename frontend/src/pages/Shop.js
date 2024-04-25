@@ -19,14 +19,13 @@ export default function Shop() {
     setPageNumber,
     getDrugs,
     setCategoryId,
+    categoryId
   } = useContext(DrugContext);
 
   const handleSearchChange = (e) => {
     setSearchInput(e.target.value);
   };
-
-
-
+  useEffect(() => setSelectedCategory(categoryId), []);
   return (
     <div className="pt-20 w-full">
       <div className="w-full min-h-[100vh] pt-10 flex flex-col items-center">
@@ -44,15 +43,18 @@ export default function Shop() {
           </button>
         </form>
         <div className="flex min-h-[100vh] w-full p-4 items-start">
-          <Categories
-            loading={loading}
-            error={error}
-            categories={categories}
-            setCategoryId={setCategoryId}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-          />
-          <div className="bg-gray-50 dark:bg-teal-800 rounded-xl ml-2 h-[100%] w-full ">
+          <div className="w-[18%] flex flex-col gap-4">
+            <Categories
+              loading={loading}
+              error={error}
+              categories={categories}
+              setCategoryId={setCategoryId}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+          </div>
+
+          <div className="bg-gray-50 dark:bg-teal-800 rounded-xl ml-2 h-[100%] w-[85%] ">
             <DrugList
               drugError={drugError}
               drugLoading={drugLoading}

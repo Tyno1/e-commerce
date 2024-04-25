@@ -91,7 +91,7 @@ export const CartProvider = ({ children }) => {
       .catch((err) => {
         setError(err);
       });
-  });
+  }, []);
 
   return (
     <CartContext.Provider

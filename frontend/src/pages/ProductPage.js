@@ -10,14 +10,19 @@ import useFetch from "../hooks/useFetch";
 import { CartContext } from "../contexts/CartContext";
 import QuantityButton from "../components/QuantityButton";
 import DeliverySideSection from "../components/DeliverySideSection";
+import { useNavigate } from "react-router-dom";
+import OtherDrugsCarousel from "../components/OtherDrugsCarousel";
 
 export default function ProductPage() {
   const { id } = useParams();
   const [drug, setDrug] = useState();
-  const { getDrugsById, loading, error } = useContext(DrugContext);
+  const { getDrugsById, loading, error, setCategoryId, drugs } =
+    useContext(DrugContext);
   const { user } = useContext(AuthContext);
   const { sendReview } = useContext(ReviewContext);
   const [optionValue, setOptionValue] = useState(1);
+  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const { AddToCart, getCartItemsByUserId, setCartItem } =
     useContext(CartContext);
@@ -52,6 +57,11 @@ export default function ProductPage() {
     }
   };
 
+  const handleByCategory = (drug) => {
+    setCategoryId(drug.category._id);
+    navigate("/shop");
+  };
+
   useEffect(() => {
     getCartItemsByUserId(user.user._id)
       .then((res) => {
@@ -71,6 +81,12 @@ export default function ProductPage() {
         console.error(err);
       });
   }, [id]);
+
+  useEffect(() => {
+    if (drug) {
+      setCategoryId(drug?.category._id);
+    }
+  }, [drug]);
 
   return (
     <div className="pt-40 md:pt-20 w-full min-h-[100vh]">
@@ -130,7 +146,13 @@ export default function ProductPage() {
 
                     <div className="true-price text-4xl line-through">
                       <span>{drug?.price.currency && "£"}</span>
-                      <span>{drug.price.amount * 1.2}</span>
+                      <span>
+                        {Math.round(
+                          (drug.price.amount / (1 - 20 / 100) +
+                            Number.EPSILON) *
+                            100
+                        ) / 100}
+                      </span>
                     </div>
                     <div className="percentage-badge bg-teal-600 rounded-lg p-1 text-sm">
                       -20%
@@ -164,7 +186,10 @@ export default function ProductPage() {
                     ADD TO CART
                   </button>
                   {/* remember to link this button to fetch products by category */}
-                  <button className="text-sm mt-2 bg-teal-950 p-2 rounded-xl">
+                  <button
+                    onClick={() => handleByCategory(drug)}
+                    className="text-sm mt-2 bg-teal-950 p-2 rounded-xl"
+                  >
                     View more <span>{drug?.category.name}</span> Drugs
                   </button>
                 </div>
@@ -179,8 +204,8 @@ export default function ProductPage() {
             {/* third section */}
             <div className="w-full h-full bg-teal-900 rounded-2xl flex flex-col p-4 gap-4">
               <h3 className="text-2xl font-bold">Verified Customer Feedback</h3>
-              <div className="flex gap-8 w-full items-start">
-                <div className="rating section flex flex-col items-center w-[30%] h-72 border rounded-lg border-teal-800 p-4">
+              <div className="flex flex-col md:flex-row gap-8 w-full items-start">
+                <div className="rating-section flex flex-col items-center w-full md:w-[30%]  h-72 border rounded-lg border-teal-800 p-4">
                   <p className="mb-8">VERIFIED RATING </p>
                   <div className="rating-box p-4 flex flex-col items-center gap-3 bg-teal-950 rounded-2xl">
                     <p className="text-4xl font-bold">4/5</p>
@@ -196,9 +221,9 @@ export default function ProductPage() {
                   </div>
                 </div>
                 {/* reviews section */}
-                <div className="w-[70%] min-h-72 border rounded-lg border-teal-800 p-4">
+                <div className="md:w-[65%] w-full flex flex-col min-h-72 border rounded-lg border-teal-800 p-4">
                   <h3 className="mb-8">REVIEWS</h3>
-                  <div>
+                  <>
                     <Review
                       reviews={reviews}
                       reviewError={reviewError}
@@ -210,12 +235,14 @@ export default function ProductPage() {
                       user={user}
                       id={id}
                     />
-                  </div>
+                  </>
                 </div>
               </div>
             </div>
+            {/* fourth section */}
+            <OtherDrugsCarousel drugs={drugs} />
           </div>
-          <DeliverySideSection />{" "}
+          <DeliverySideSection />
         </div>
       )}
     </div>
