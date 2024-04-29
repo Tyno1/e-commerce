@@ -85,12 +85,12 @@ const Cart = () => {
                     <p className="text-sm md:text-medium">
                       Order ID: DD83HJSBE99029002
                     </p>
-                    <p className="md:text-3xl font-bold">{item.drugId.name}</p>
+                    <p className="md:text-3xl font-bold">{item?.drugId?.name}</p>
                     <p className="text-sm md:text-medium">
-                      {item?.drugId.category.name}
+                      {item?.drugId?.category.name}
                     </p>
                     <p className="text-sm md:text-medium">
-                      {item?.drugId.manufacturer}
+                      {item?.drugId?.manufacturer}
                     </p>
                     <p className="text-sm md:text-medium">item dosage</p>
                   </div>

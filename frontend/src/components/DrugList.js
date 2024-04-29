@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import DrugCard from "./DrugCard";
 import ClipLoader from "react-spinners/ClipLoader";
+import { toast } from "react-toastify";
 
-const 
-DrugList = ({
+const DrugList = ({
   drugLoading,
   drugError,
   drugs,
@@ -11,26 +11,36 @@ DrugList = ({
   pageNumber,
   setPageNumber,
   getDrugs,
+  setCategoryId,
+  meta
 }) => {
   const handlePreviousPage = () => {
     if (pageNumber > 1) {
       setPageNumber(pageNumber - 1);
+    } else {
+      toast("There are no more drugs to display", { hideProgressBar: true });
     }
   };
 
   const handleNextPage = () => {
-    setPageNumber(pageNumber + 1);
+    console.log(meta);
+    if (Number(meta?.currentPage) < meta?.pages) {
+      setPageNumber(pageNumber + 1);
+    } else {
+      toast("There are no more drugs to display", { hideProgressBar: true });
+    }
   };
 
-  useEffect(() => {
-    getDrugs()
-      .then((res) => {
-        setDrugs(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   setCategoryId("")
+  //   getDrugs()
+  //     .then((res) => {
+  //       setDrugs(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   return (
     <div className="druglist w-full h-full flex flex-row flex-wrap gap-4 p-2 items-center justify-around">
@@ -46,7 +56,13 @@ DrugList = ({
         (drugError && <div> {drugError?.message} </div>) ||
         (drugs &&
           drugs?.length > 0 &&
-          drugs?.map((drug) => <DrugCard key={drug._id} drug={drug} />))}
+          drugs?.map((drug) => (
+            <DrugCard
+              key={drug._id}
+              drug={drug}
+              setCategoryId={setCategoryId}
+            />
+          )))}
       <div className="mx-auto flex gap-10 my-10">
         <button
           onClick={handlePreviousPage}

@@ -7,20 +7,26 @@ export const DrugProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [drugs, setDrugs] = useState([]);
-  const [drug, setDrug] = useState("")
+  const [drug, setDrug] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [categoryId, setCategoryId] = useState("");
+  const [isSearched, setIsSearched] = useState(false);
+  const [drugsByCategory, setDrugsByCategory] = useState("");
+  const [meta, setMeta] = useState()
 
   const getDrugs = () => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
         .get(
-          `http://localhost:3000/drugs/all?page=${pageNumber}&categoryId=${categoryId}`
+          `http://localhost:3000/drugs/all?page=${pageNumber}${
+            categoryId ? `&categoryId=${categoryId}` : ""
+          }`
         )
         .then((res) => {
           setLoading(false);
-          setDrugs(res.data);
+          setDrugs(res.data.data);
+          setMeta(res.data)
           resolve(res);
         })
         .catch((err) => {
@@ -31,6 +37,28 @@ export const DrugProvider = ({ children }) => {
     });
   };
 
+  const getDrugsByCategory = () => {
+    return new Promise((resolve, reject) => {
+      setLoading(true);
+      axios
+        .get(
+          `http://localhost:3000/drugs/all?page=${pageNumber}${
+            categoryId ? `&categoryId=${categoryId}` : ""
+          }`
+        )
+        .then((res) => {
+          setLoading(false);
+          setDrugsByCategory(res.data);
+          setMeta(res.data)
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+          setError(err);
+          setLoading(false);
+        });
+    });
+  };
   const getDrugsById = (id) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
@@ -49,6 +77,25 @@ export const DrugProvider = ({ children }) => {
     });
   };
 
+  const getDrugsByName = (name) => {
+    return new Promise((resolve, reject) => {
+      setLoading(true);
+      axios
+        .get(`http://localhost:3000/drugs/search?name=${name}`)
+        .then((res) => {
+          setLoading(false);
+          setDrugs(res.data);
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+          setError(err);
+          console.log(err.message);
+          setLoading(false);
+        });
+    });
+  };
+
   useEffect(() => {
     getDrugs();
   }, [pageNumber, categoryId]);
@@ -59,12 +106,19 @@ export const DrugProvider = ({ children }) => {
         loading,
         getDrugs,
         getDrugsById,
+        getDrugsByName,
         drugs,
         setDrugs,
         pageNumber,
         setPageNumber,
         setCategoryId,
-        categoryId
+        categoryId,
+        isSearched,
+        setIsSearched,
+        getDrugsByCategory,
+        setDrugsByCategory,
+        drugsByCategory,
+        meta
       }}
     >
       {children}
