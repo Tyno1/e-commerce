@@ -8,6 +8,10 @@ export default function Categories({
   setCategoryId,
   setSelectedCategory,
   selectedCategory,
+  setPageNumber,
+  setIsSearched,
+  isSearched,
+  getDrugs,
 }) {
   return (
     <div className="categories bg-gray-50 dark:bg-teal-900 rounded-xl w-full min-h-[70vh] p-2">
@@ -19,6 +23,8 @@ export default function Categories({
             onClick={() => {
               setCategoryId("");
               setSelectedCategory("");
+              setPageNumber(1);
+              getDrugs();
             }}
             className="flex p-2 rounded-lg gap-6 items-center text-sm justify-center w-full mb-2 min-h-14 text-teal-900 dark:text-gray-50 dark:bg-teal-950 bg-gray-100"
           >
@@ -29,11 +35,13 @@ export default function Categories({
               onClick={() => {
                 setCategoryId(category._id);
                 setSelectedCategory(category._id);
+                setIsSearched(false);
+                setPageNumber(1);
               }}
               key={category._id}
-              className={`flex p-2 rounded-lg gap-6 items-start w-full mb-2 min-h-14 items-center ${
+              className={`flex p-2 rounded-lg gap-6 w-full mb-2 min-h-14 justify-start items-center ${
                 selectedCategory === category._id
-                  ? "bg-orange-500"
+                  ? "dark:bg-orange-300 dark:text-teal-950 text-white bg-teal-950"
                   : "text-teal-900 dark:text-gray-50 dark:bg-teal-950 bg-gray-100"
               }`}
             >
@@ -47,6 +55,8 @@ export default function Categories({
             onClick={() => {
               setCategoryId("");
               setSelectedCategory("");
+              setPageNumber(1);
+              getDrugs();
             }}
             className="flex p-2 rounded-lg gap-6 text-sm items-center justify-center w-full mb-2 min-h-14 text-teal-900 dark:text-gray-50 dark:bg-teal-950 bg-gray-100"
           >

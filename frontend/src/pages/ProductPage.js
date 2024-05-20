@@ -16,11 +16,22 @@ import OtherDrugsCarousel from "../components/OtherDrugsCarousel";
 export default function ProductPage() {
   const { id } = useParams();
   const [drug, setDrug] = useState();
-  const { getDrugsById, loading, error, setCategoryId, drugs } =
-    useContext(DrugContext);
+  const {
+    getDrugsById,
+    getDrugs,
+    categoryId,
+    loading,
+    error,
+    setCategoryId,
+    drugs,
+    getDrugsByCategory,
+    drugsByCategory,
+    setDrugsByCategory,
+  } = useContext(DrugContext);
   const { user } = useContext(AuthContext);
   const { sendReview } = useContext(ReviewContext);
   const [optionValue, setOptionValue] = useState(1);
+
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -58,9 +69,18 @@ export default function ProductPage() {
   };
 
   const handleByCategory = (drug) => {
-    setCategoryId(drug.category._id);
-    navigate("/shop");
+    navigate(`/shop?category=${drug.category._id}`);
   };
+
+  useEffect(() => {
+    getDrugsByCategory(categoryId)
+      .then((res) => {
+        setDrugsByCategory(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [categoryId]);
 
   useEffect(() => {
     getCartItemsByUserId(user.user._id)
@@ -240,7 +260,7 @@ export default function ProductPage() {
               </div>
             </div>
             {/* fourth section */}
-            <OtherDrugsCarousel drugs={drugs} />
+            <OtherDrugsCarousel drugsByCategory={drugsByCategory} />
           </div>
           <DeliverySideSection />
         </div>

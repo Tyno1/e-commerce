@@ -12,16 +12,16 @@ const priceSchema = new Schema({
   },
 });
 
-const doseSchema = new Schema({
-  amount: {
-    type: Number,
-    required: true,
-  },
-  unit: {
-    type: String,
-    required: true,
-  },
-});
+// const doseSchema = new Schema({
+//   amount: {
+//     type: Number,
+//     required: true,
+//   },
+//   unit: {
+//     type: String,
+//     required: true,
+//   },
+// });
 
 const drugSchema = new Schema({
   name: {
@@ -50,7 +50,7 @@ const drugSchema = new Schema({
     required: true,
   },
   dose: {
-    type: doseSchema,
+    type: String,
     required: true,
   },
   imageUrl: {

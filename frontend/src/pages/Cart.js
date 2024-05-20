@@ -3,6 +3,7 @@ import QuantityButton from "../components/QuantityButton";
 import { CartContext } from "../contexts/CartContext";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import PayButton from "../components/PayButton";
 
 const Cart = () => {
   const [optionValues, setOptionValues] = useState({});
@@ -85,14 +86,32 @@ const Cart = () => {
                     <p className="text-sm md:text-medium">
                       Order ID: DD83HJSBE99029002
                     </p>
-                    <p className="md:text-3xl font-bold">{item.drugId.name}</p>
-                    <p className="text-sm md:text-medium">
-                      {item?.drugId.category.name}
+                    <p className="md:text-3xl font-bold">
+                      {item?.drugId?.name}
                     </p>
                     <p className="text-sm md:text-medium">
-                      {item?.drugId.manufacturer}
+                      Drug Type: {item?.drugId?.category.name}
                     </p>
-                    <p className="text-sm md:text-medium">item dosage</p>
+                    <p className="text-sm md:text-medium">
+                      Manufacturer: {item?.drugId?.manufacturer}
+                    </p>
+                    <p className="text-sm md:text-medium">
+                      Drug Dose: {item?.drugId?.dose}
+                    </p>
+                    <div className="price flex flex-col gap-4">
+                      <p className="text-sm md:text-medium">
+                        Unit Price: <span>£</span>
+                        <span className="ml-1">
+                          {item?.drugId?.price.amount}
+                        </span>
+                      </p>
+                      <p className="text-lg md:text-xl font-bold">
+                        Total Price: <span>£</span>
+                        <span className="ml-1">
+                          {item?.drugId?.price.amount * item?.quantity}
+                        </span>
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <form className="flex w-full items-center gap-4">
@@ -137,7 +156,11 @@ const Cart = () => {
               </p>
               <p className="price font-bold">
                 <span className="font-bold">£</span>
-                <span className="ml-1">93.00</span>
+                <span className="ml-1">
+                  {cartItem.reduce((accumulator, item) => {
+                    return (accumulator += item?.drugId.price.amount);
+                  }, 0)}
+                </span>
               </p>
             </div>
             <div className="shipping">
@@ -173,7 +196,9 @@ const Cart = () => {
                 <span className="ml-1">93.00</span>
               </p>
             </div>
-            <button className="w-full font-bold bg-orange-300 h-20 text-teal-950">Checkout</button>
+            <button className="w-full font-bold bg-orange-300 h-20 text-teal-950">
+              <PayButton cartItem={cartItem} />
+            </button>
           </div>
         </div>
       )}

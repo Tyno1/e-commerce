@@ -10,6 +10,7 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const statusRoutes = require("./routes/statusRoutes");
 const cartRoutes = require("./routes/cartRoutes");
+const stripe = require("./routes/stripe");
 
 const app = express();
 const uri =
@@ -33,6 +34,7 @@ mongoose.connection.once("open", () => {
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.use(express.static(process.env.STATIC_DIR))
 
 app.use("/users", userRoutes);
 app.use("/userTypes", userTypeRoutes);
@@ -41,6 +43,8 @@ app.use("/categories", categoryRoutes);
 app.use("/reviews", reviewRoutes);
 app.use("/status", statusRoutes);
 app.use("/cart", cartRoutes);
+app.use("/stripe", stripe);
+
 
 // Start the server
 const port = process.env.PORT || 3000;

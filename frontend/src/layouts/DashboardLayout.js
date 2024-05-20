@@ -5,11 +5,7 @@ import { RiBus2Fill } from "react-icons/ri";
 import { FaInbox } from "react-icons/fa6";
 import { RiCoupon3Fill } from "react-icons/ri";
 import { MdOutlineSaveAlt, MdManageAccounts, MdLogout } from "react-icons/md";
-import VoucherView from "./DashboardPages/VoucherView";
-import SavedItemsViews from "./DashboardPages/SavedItemsViews";
-import AccountManagementView from "./DashboardPages/AccountManagementView";
-import InboxView from "./DashboardPages/InboxView";
-import OrdersView from "./DashboardPages/OrdersView";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const DashboardMenuItem = ({ icon, text, onClick, selectedMenu }) => (
   <div
@@ -27,12 +23,13 @@ const DashboardMenuItem = ({ icon, text, onClick, selectedMenu }) => (
   </div>
 );
 
-export default function Dashboard() {
-  const { user } = useContext(AuthContext);
+export default function DashboardLayout() {
   const [selectedMenu, setSelectedMenu] = useState();
+  const navigate = useNavigate();
 
-  const handleSelectMenu = (menu) => {
+  const handleSelectMenu = (menu, route) => {
     setSelectedMenu(menu);
+    navigate(route);
   };
 
   return (
@@ -48,41 +45,40 @@ export default function Dashboard() {
           icon={<RiBus2Fill size={28} />}
           selectedMenu={selectedMenu}
           text="Orders"
-          onClick={() => handleSelectMenu("Orders")}
+          onClick={() => handleSelectMenu("Orders", "orders")}
         />
         <DashboardMenuItem
           icon={<FaInbox size={28} />}
           selectedMenu={selectedMenu}
           text="Inbox"
-          onClick={() => handleSelectMenu("Inbox")}
+          onClick={() => handleSelectMenu("Inbox", "inbox")}
         />
         <DashboardMenuItem
           icon={<RiCoupon3Fill size={28} />}
           selectedMenu={selectedMenu}
           text="Voucher"
-          onClick={() => handleSelectMenu("Voucher")}
+          onClick={() => handleSelectMenu("Voucher", "voucher")}
         />
         <DashboardMenuItem
           icon={<MdOutlineSaveAlt size={28} />}
           selectedMenu={selectedMenu}
           text="Saved items"
-          onClick={() => handleSelectMenu("Saved items")}
+          onClick={() => handleSelectMenu("Saved items", "saved-items")}
         />
         <DashboardMenuItem
           icon={<MdManageAccounts size={28} />}
           selectedMenu={selectedMenu}
           text="Account Management"
-          onClick={() => handleSelectMenu("Account Management")}
+          onClick={() =>
+            handleSelectMenu("Account Management", "account-management")
+          }
         />
         <DashboardMenuItem icon={<MdLogout size={28} />} text="Logout" />
       </div>
       <div className="bg-gray-50 dark:bg-teal-800 rounded-xl ml-2 h-[100%] w-full md:w-[85%] ">
-        {selectedMenu === "My Account" && <AccountManagementView />}
-        {selectedMenu === "Orders" && <OrdersView />}
-        {selectedMenu === "Inbox" && <InboxView />}
-        {selectedMenu === "Voucher" && <VoucherView />}
-        {selectedMenu === "Saved items" && <SavedItemsViews />}
-        {selectedMenu === "Account Management" && <AccountManagementView />}
+        <main>
+          <Outlet />
+        </main>
       </div>
     </div>
   );

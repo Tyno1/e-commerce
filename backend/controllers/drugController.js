@@ -62,22 +62,34 @@ module.exports.findAll = async (req, res, next) => {
 
   try {
     let drugs;
+    let totalDrugs;
     // If categoryId parameter is provided, add category filter to the query
     if (categoryId) {
       drugs = await Drug.find({ category: categoryId })
-      .populate("category")
-      .skip(skip)
-      .limit(limit)
-      .exec();
+        .populate("category")
+        .skip(skip)
+        .limit(limit)
+        .exec();
+      
+      totalDrugs = await Drug.find({ category: categoryId });
     } else {
       drugs = await Drug.find()
-      .populate("category")
-      .skip(skip)
-      .limit(limit)
-      .exec();
+        .populate("category")
+        .skip(skip)
+        .limit(limit)
+        .exec();
+
+      totalDrugs = await Drug.find();
     }
 
-    res.json(drugs);
+    const response = {
+      data: drugs,
+      currentPage: page,
+      pages: Math.ceil(totalDrugs.length / limit),
+    }
+
+
+    res.json(response);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -109,14 +121,11 @@ module.exports.findByCategoryId = async (req, res) => {
   }
 };
 
-
 // find drug by name
 module.exports.findDrugsByName = async (req, res) => {
   try {
-    const name = req.query.name; // Extract the search term from the query parameters
-
+    const name = req.query.name;
     if (!name) {
-      // If no search term is provided, return a 400 Bad Request response
       return res.status(400).json({ error: "No search term provided" });
     }
 
@@ -131,18 +140,20 @@ module.exports.findDrugsByName = async (req, res) => {
     // Check if any drugs were found
     if (!drugs || drugs.length === 0) {
       // If no drugs were found, return a 404 Not Found response
-      return res.status(404).json({ error: "No drugs found with the provided name" });
+      return res
+        .status(404)
+        .json({ error: "No drugs found with the provided name" });
     }
 
     // If drugs were found, return them
     res.json(drugs);
   } catch (error) {
     // Handle any errors that occur during the search
-    res.status(500).json({ error: "Error finding drugs by name: " + error.message });
+    res
+      .status(500)
+      .json({ error: "Error finding drugs by name: " + error.message });
   }
 };
-
-
 
 // DELETE a drug by ID
 module.exports.deleteById = async (req, res) => {
