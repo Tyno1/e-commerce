@@ -86,6 +86,7 @@ export const DrugProvider = ({ children }) => {
           setLoading(false);
           setDrugs(res.data);
           resolve(res);
+          setMeta(res.data);
         })
         .catch((err) => {
           reject(err);

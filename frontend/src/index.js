@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "./contexts/AuthContext";
 import { CategoryProvider } from "./contexts/CategoryContext";
@@ -18,9 +17,7 @@ root.render(
         <DrugProvider>
           <ReviewProvider>
             <CartProvider>
-              <BrowserRouter>
                 <App />
-              </BrowserRouter>
             </CartProvider>
           </ReviewProvider>
         </DrugProvider>

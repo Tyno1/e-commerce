@@ -12,7 +12,7 @@ const DrugList = ({
   setPageNumber,
   getDrugs,
   setCategoryId,
-  meta
+  meta,
 }) => {
   const handlePreviousPage = () => {
     if (pageNumber > 1) {
@@ -31,38 +31,31 @@ const DrugList = ({
     }
   };
 
-  // useEffect(() => {
-  //   setCategoryId("")
-  //   getDrugs()
-  //     .then((res) => {
-  //       setDrugs(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
   return (
-    <div className="druglist w-full h-full flex flex-row flex-wrap gap-4 p-2 items-center justify-around">
+    <div className="container w-full h-full flex flex-col flex-wrap gap-4 p-2 items-center justify-around">
       {(drugLoading && (
-        <ClipLoader
-          color="#000000"
-          loading={drugLoading}
-          size={150}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-        />
+        <div className="mx-auto">
+          <ClipLoader
+            color="#000000"
+            loading={drugLoading}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
       )) ||
         (drugError && <div> {drugError?.message} </div>) ||
-        (drugs &&
-          drugs?.length > 0 &&
-          drugs?.map((drug) => (
-            <DrugCard
-              key={drug._id}
-              drug={drug}
-              setCategoryId={setCategoryId}
-            />
-          )))}
+        (drugs && drugs?.length > 0 && (
+          <div className="druglist w-full h-full flex flex-row flex-wrap gap-4 p-2 items-center justify-around">
+            {drugs?.map((drug) => (
+              <DrugCard
+                key={drug._id}
+                drug={drug}
+                setCategoryId={setCategoryId}
+              />
+            ))}
+          </div>
+        ))}
       <div className="mx-auto flex gap-10 my-10">
         <button
           onClick={handlePreviousPage}

@@ -41,7 +41,7 @@ export default function Categories({
               key={category._id}
               className={`flex p-2 rounded-lg gap-6 w-full mb-2 min-h-14 justify-start items-center ${
                 selectedCategory === category._id
-                  ? "bg-orange-500"
+                  ? "dark:bg-orange-300 dark:text-teal-950 text-white bg-teal-950"
                   : "text-teal-900 dark:text-gray-50 dark:bg-teal-950 bg-gray-100"
               }`}
             >

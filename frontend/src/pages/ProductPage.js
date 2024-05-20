@@ -75,7 +75,7 @@ export default function ProductPage() {
   useEffect(() => {
     getDrugsByCategory(categoryId)
       .then((res) => {
-        setDrugsByCategory(res.data);
+        setDrugsByCategory(res.data.data);
       })
       .catch((err) => {
         console.log(err);
