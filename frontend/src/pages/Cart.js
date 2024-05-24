@@ -14,6 +14,7 @@ const Cart = () => {
     getCartItemsByUserId,
     UpdateCart,
   } = useContext(CartContext);
+
   const { user } = useContext(AuthContext);
   const [delResp, setDelResp] = useState("");
   const [updateResp, setUpdateResp] = useState("");
@@ -102,13 +103,19 @@ const Cart = () => {
                       <p className="text-sm md:text-medium">
                         Unit Price: <span>£</span>
                         <span className="ml-1">
-                          {item?.drugId?.price.amount}
+                          {Math.round(
+                            (item?.drugId?.price.amount + Number.EPSILON) * 100
+                          ) / 100}
                         </span>
                       </p>
                       <p className="text-lg md:text-xl font-bold">
                         Total Price: <span>£</span>
                         <span className="ml-1">
-                          {item?.drugId?.price.amount * item?.quantity}
+                          {Math.round(
+                            (item?.drugId?.price.amount + Number.EPSILON) *
+                              item?.quantity *
+                              100
+                          ) / 100}
                         </span>
                       </p>
                     </div>
@@ -158,24 +165,17 @@ const Cart = () => {
                 <span className="font-bold">£</span>
                 <span className="ml-1">
                   {cartItem.reduce((accumulator, item) => {
-                    return (accumulator += item?.drugId.price.amount);
+                    return (accumulator +=
+                      Math.round(
+                        (item?.drugId.price.amount + Number.EPSILON) *
+                          item?.quantity *
+                          100
+                      ) / 100);
                   }, 0)}
                 </span>
               </p>
             </div>
-            <div className="shipping">
-              <p className="font-bold">SHIPPING</p>
-              <div className="p-6 w-full">
-                <select
-                  className="p-4 rounded bg-teal-900 w-full"
-                  name=""
-                  id=""
-                >
-                  <option value="standard shipping">Standard Shipping</option>
-                  <option value="next day shipping">Next Day Shipping</option>
-                </select>
-              </div>
-            </div>
+
             <form className="promo flex flex-col">
               <label className="font-bold">PROMO CODE</label>
               <div className="p-6 flex">
@@ -193,7 +193,16 @@ const Cart = () => {
               <p className="font-bold">TOTAL COST</p>
               <p className="price font-bold">
                 <span className="font-bold">£</span>
-                <span className="ml-1">93.00</span>
+                <span className="ml-1">
+                  {cartItem.reduce((accumulator, item) => {
+                    return (accumulator +=
+                      Math.round(
+                        (item?.drugId.price.amount + Number.EPSILON) *
+                          item?.quantity *
+                          100
+                      ) / 100);
+                  }, 0)}
+                </span>
               </p>
             </div>
             <button className="w-full font-bold bg-orange-300 h-20 text-teal-950">

@@ -14,6 +14,7 @@ module.exports.register = async (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
+      phoneNumber: req.body.phoneNumber,
       password: hashedPassword,
       userType: userType._id,
     });
@@ -49,6 +50,7 @@ module.exports.login = async (req, res) => {
       token,
       user: {
         username: user.username,
+        phoneNumber: user.phoneNumber,
         email: user.email,
         fullName: `${user.firstName} ${user.lastName}`,
         _id: user._id,

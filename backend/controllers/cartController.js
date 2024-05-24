@@ -28,7 +28,7 @@ exports.getCartItemsByUserId = async (req, res) => {
         path: "drugId",
         populate: {
           path: "category",
-          model: "Category", // Adjust the model name if necessary
+          model: "Category", 
         },
       })
       .populate("status");

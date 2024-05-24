@@ -52,6 +52,7 @@ export default function ProductPage() {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+
     const newPayload = {
       ...payload,
       drugId: drug._id,
@@ -83,7 +84,7 @@ export default function ProductPage() {
   }, [categoryId]);
 
   useEffect(() => {
-    getCartItemsByUserId(user.user._id)
+    getCartItemsByUserId(user?.user?._id)
       .then((res) => {
         setCartItem(res.data);
       })

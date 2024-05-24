@@ -29,6 +29,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 // layouts
 import RootLayout from "./layouts/RootLayout";
 import OrdersView from "./pages/DashboardPages/OrdersView";
+import { OrderInfo } from "./pages/DashboardPages/OrderInfo";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,6 +48,7 @@ const router = createBrowserRouter(
       <Route path="dashboard" element={<DashboardLayout />}>
         <Route index element={<AccountView />} />
         <Route path="orders" element={<OrdersView />} />
+        <Route path="orders/:orderId" element={<OrderInfo />} />
         <Route path="inbox" element={<InboxView />} />
         <Route path="voucher" element={<VoucherView />} />
         <Route path="saved-items" element={<SavedItemsViews />} />
