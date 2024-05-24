@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import LoginImg from "../images/login.jpg";
 import { toast } from "react-toastify";
 import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [payload, setPayload] = useState({ email: "", password: "" });
   const { login } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.name]: e.target.value });
   };
@@ -76,12 +76,23 @@ export default function Login() {
               Login
             </button>
 
-            <div className="flex flex-col items-center text-teal-900 dark:text-teal-50">
+            <div className="mb-6 flex flex-col items-center text-teal-900 dark:text-teal-50 gap-2">
               <p>Forgot your password ?</p>
               {/* remember to add reset password route */}
-              <Link className="text-gray-400 dark:text-orange-300">
+
+              <button className="text-gray-400 dark:text-orange-300">
                 Reset it here
-              </Link>
+              </button>
+            </div>
+
+            <div className="flex flex-col items-center text-teal-900 dark:text-teal-50 gap-2">
+              <p>Dont have an account?</p>
+              <button
+                onClick={() => navigate("/register")}
+                className="text-gray-400 dark:text-orange-300"
+              >
+                Register
+              </button>
             </div>
           </form>
         </div>

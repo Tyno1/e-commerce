@@ -91,7 +91,7 @@ export default function Shop() {
             />
           </div>
 
-          <div className="bg-gray-50 dark:bg-teal-800 rounded-xl ml-2 h-[100%] w-full md:w-[85%] ">
+          <div className="bg-gray-50 dark:bg-teal-950 rounded-xl ml-2 h-[100%] w-full md:w-[85%] border border-teal-900">
             <DrugList
               drugError={drugError}
               drugLoading={drugLoading}

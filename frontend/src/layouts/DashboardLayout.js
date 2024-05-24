@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../contexts/AuthContext";
+import React, { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { RiBus2Fill } from "react-icons/ri";
 import { FaInbox } from "react-icons/fa6";
@@ -13,8 +12,8 @@ const DashboardMenuItem = ({ icon, text, onClick, selectedMenu }) => (
     className={`p-4 flex gap-4 items-center cursor-pointer rounded-lg 
       ${
         selectedMenu && selectedMenu === text
-          ? "bg-teal-900 text-white rounded-none"
-          : "bg-white text-teal-900 hover:bg-gray-100"
+          ? "dark:bg-orange-300 bg-teal-900 dark:text-teal-950 text-teal-50 rounded-none"
+          : "dark:bg-teal-950 dark:text-white dark:hover:bg-teal-800 bg-white text-teal-900 hover:bg-slate-100 rounded-none"
       }
     `}
   >
@@ -33,8 +32,8 @@ export default function DashboardLayout() {
   };
 
   return (
-    <div className="w-full h-[100vh] pt-32 px-8 mb-20 flex flex-">
-      <div className="left-section h-full w-[350px] rounded-lg bg-white md:flex flex-col">
+    <div className="w-full h-[90vh] pt-32 px-8 mb-20 flex flex-">
+      <div className="left-section h-full w-[350px] rounded-lg dark:bg-teal-950 border dark:border-teal-900 md:flex flex-col shadow-2xl">
         <DashboardMenuItem
           icon={<CgProfile size={28} />}
           selectedMenu={selectedMenu}
@@ -75,7 +74,7 @@ export default function DashboardLayout() {
         />
         <DashboardMenuItem icon={<MdLogout size={28} />} text="Logout" />
       </div>
-      <div className="bg-gray-50 dark:bg-teal-800 rounded-xl ml-2 h-[100%] w-full md:w-[85%] ">
+      <div className="bg-gray-50 dark:bg-teal-950 border border-teal-900 shadow-2xl rounded-xl ml-2 h-[100%] w-full md:w-[85%] overflow-y-auto">
         <main>
           <Outlet />
         </main>

@@ -12,16 +12,7 @@ const priceSchema = new Schema({
   },
 });
 
-// const doseSchema = new Schema({
-//   amount: {
-//     type: Number,
-//     required: true,
-//   },
-//   unit: {
-//     type: String,
-//     required: true,
-//   },
-// });
+
 
 const drugSchema = new Schema({
   name: {

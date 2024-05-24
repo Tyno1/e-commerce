@@ -11,6 +11,8 @@ const reviewRoutes = require("./routes/reviewRoutes");
 const statusRoutes = require("./routes/statusRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const stripe = require("./routes/stripe");
+const orderRoutes = require("./routes/orderRoutes");
+const mailerSendRoutes = require("./routes/mailerSendRoute");
 
 const app = express();
 const uri =
@@ -34,7 +36,7 @@ mongoose.connection.once("open", () => {
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
-app.use(express.static(process.env.STATIC_DIR))
+app.use(express.static(process.env.STATIC_DIR));
 
 app.use("/users", userRoutes);
 app.use("/userTypes", userTypeRoutes);
@@ -44,7 +46,8 @@ app.use("/reviews", reviewRoutes);
 app.use("/status", statusRoutes);
 app.use("/cart", cartRoutes);
 app.use("/stripe", stripe);
-
+app.use("/orders", orderRoutes);
+app.use("/mailersend", mailerSendRoutes);
 
 // Start the server
 const port = process.env.PORT || 3000;

@@ -13,9 +13,13 @@ const DrugCard = ({ drug, widthStyle = "w-52", setCategoryId }) => {
 
   return (
     <div
-      className={`container max-w-sm h-72 flex ${widthStyle} rounded-lg text-teal-950 dark:bg-teal-950 shadow-2xl p-2 flex-col`}
+      className={`container max-w-sm h-72 flex ${widthStyle} rounded-lg text-teal-950 dark:bg-teal-950 shadow-2xl p-2 flex-col dark:hover:bg-teal-800`}
     >
-      <Link className="w-full h-full" to={`/drugs/${drug?._id}`} onClick={() => setCategoryId(drug?.category?._id)}>
+      <Link
+        className="w-full h-full"
+        to={`/drugs/${drug?._id}`}
+        onClick={() => setCategoryId(drug?.category?._id)}
+      >
         <div className="w-full p-2 border dark:border-orange-100 border-teal-900 rounded-lg h-[60%] cursor">
           <div className="image-container w-full bg-teal-900 rounded-lg h-full">
             <img
@@ -26,7 +30,7 @@ const DrugCard = ({ drug, widthStyle = "w-52", setCategoryId }) => {
           </div>
         </div>
 
-        <div className="texts px-2 mt-2 flex flex-col h-[40%] w-full justify-between  dark:text-teal-50 text-teal-950">
+        <div className="texts px-2 mt-2 flex flex-col h-[40%] w-full justify-between dark:text-teal-50 text-teal-950">
           <div className="top-texts">
             <p className="text-sm font-bold mb-2 truncate">
               {titleCase(drug?.name)}

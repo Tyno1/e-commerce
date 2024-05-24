@@ -8,6 +8,7 @@ import { CategoryProvider } from "./contexts/CategoryContext";
 import { DrugProvider } from "./contexts/DrugContext";
 import { ReviewProvider } from "./contexts/reviewContext";
 import { CartProvider } from "./contexts/CartContext";
+import { OrderProvider } from "./contexts/OrderContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,7 +18,9 @@ root.render(
         <DrugProvider>
           <ReviewProvider>
             <CartProvider>
+              <OrderProvider>
                 <App />
+              </OrderProvider>
             </CartProvider>
           </ReviewProvider>
         </DrugProvider>

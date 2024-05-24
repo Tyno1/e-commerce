@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   const register = (data) => {
     return new Promise((resolve, reject) => {
       axios
-        .post("http://localhost:3000/users/register", data)
+        .post("http://localhost:3000/users/signup", data)
         .then((res) => {
           setUser(res.data);
           resolve(res);
