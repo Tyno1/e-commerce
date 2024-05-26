@@ -35,7 +35,7 @@ mongoose.connection.once("open", () => {
 // Middleware
 app.use(
   cors({
-    origin: "https://medikart-server.onrender.com", // This allows all origins
+    origin: "https://5ee4-146-200-69-93.ngrok-free.app", // This allows all origins
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
