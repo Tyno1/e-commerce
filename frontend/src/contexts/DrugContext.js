@@ -19,7 +19,7 @@ export const DrugProvider = ({ children }) => {
       setLoading(true);
       axios
         .get(
-          `http://localhost:3000/drugs/all?page=${pageNumber}${
+          `${process.env.REACT_APP_BACKEND_SERVER_URL}/drugs/all?page=${pageNumber}${
             categoryId ? `&categoryId=${categoryId}` : ""
           }`
         )
@@ -42,7 +42,7 @@ export const DrugProvider = ({ children }) => {
       setLoading(true);
       axios
         .get(
-          `http://localhost:3000/drugs/all?page=${pageNumber}${
+          `${process.env.REACT_APP_BACKEND_SERVER_URL}/drugs/all?page=${pageNumber}${
             categoryId ? `&categoryId=${categoryId}` : ""
           }`
         )
@@ -63,7 +63,7 @@ export const DrugProvider = ({ children }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
-        .get("http://localhost:3000/drugs/" + id)
+        .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/drugs/` + id)
         .then((res) => {
           setLoading(false);
           setDrug(res.data);
@@ -81,7 +81,7 @@ export const DrugProvider = ({ children }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
-        .get(`http://localhost:3000/drugs/search?name=${name}`)
+        .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/drugs/search?name=${name}`)
         .then((res) => {
           setLoading(false);
           setDrugs(res.data);

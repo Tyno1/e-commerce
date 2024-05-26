@@ -18,7 +18,7 @@ export const ReviewProvider = ({ children }) => {
     setLoading(true)
     return new Promise((resolve, reject) => {
       axios
-        .post("http://localhost:3000/reviews", {
+        .post(`${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews`, {
           userId: user.user._id,
           drugId,
           comment,
@@ -41,7 +41,7 @@ export const ReviewProvider = ({ children }) => {
   const deleteReview = (reviewId) => {
     return new Promise((resolve, reject) => {
       axios
-        .delete(`http://localhost:3000/reviews/${reviewId}`)
+        .delete(`${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews/${reviewId}`)
         .then((res) => {
           resolve(res);
           // Optionally update the reviews state to reflect the deletion

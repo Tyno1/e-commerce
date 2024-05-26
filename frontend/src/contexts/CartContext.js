@@ -15,7 +15,7 @@ export const CartProvider = ({ children }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
-        .post("http://localhost:3000/cart", payload)
+        .post(`${process.env.REACT_APP_BACKEND_SERVER_URL}/cart`, payload)
         .then((res) => {
           resolve(res);
           setData(res.data);
@@ -33,7 +33,7 @@ export const CartProvider = ({ children }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
-        .put("http://localhost:3000/cart/" + cartId, payload)
+        .put(`${process.env.REACT_APP_BACKEND_SERVER_URL}/cart/` + cartId, payload)
         .then((res) => {
           resolve(res);
           setData(res.data);
@@ -51,7 +51,7 @@ export const CartProvider = ({ children }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
-        .get("http://localhost:3000/cart/user/" + userId)
+        .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/cart/user/` + userId)
         .then((res) => {
           resolve(res);
           setLoading(false);
@@ -69,7 +69,7 @@ export const CartProvider = ({ children }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
-        .delete("http://localhost:3000/cart/" + cartId)
+        .delete(`${process.env.REACT_APP_BACKEND_SERVER_URL}/cart/` + cartId)
         .then((res) => {
           resolve(res);
           setData(res.data);

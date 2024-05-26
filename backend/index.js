@@ -33,7 +33,13 @@ mongoose.connection.once("open", () => {
 });
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://medikart-server.onrender.com", // This allows all origins
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.static(process.env.STATIC_DIR));
