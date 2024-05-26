@@ -34,11 +34,7 @@ mongoose.connection.once("open", () => {
 
 // Middleware
 app.use(
-  cors({
-    origin: "https://5ee4-146-200-69-93.ngrok-free.app", // This allows all origins
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  cors()
 );
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
