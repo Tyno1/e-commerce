@@ -7,7 +7,7 @@ const PayButton = ({ cartItem }) => {
 
   const handleCheckout = () => {
     console.log(cartItem);
-    axios.post("http://localhost:3000/stripe/create-checkout-session", {
+    axios.post(`${process.env.REACT_APP_BACKEND_SERVER_URL}/stripe/create-checkout-session`, {
       cartItem,
       userId: user.user._id,
     }).then((res)=>{

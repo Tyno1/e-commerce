@@ -14,7 +14,7 @@ export const CategoryProvider = ({ children }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
-        .get("http://localhost:3000/categories/all")
+        .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/categories/all`)
         .then((res) => {
           setCategories(res.data);
           resolve(res);

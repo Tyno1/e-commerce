@@ -15,7 +15,7 @@ export const OrderProvider = ({ children }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
-        .get("http://localhost:3000/orders/user/" + user.user._id)
+        .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/orders/user/` + user.user._id)
         .then((res) => {
           resolve(res);
           setLoading(false);
@@ -32,7 +32,7 @@ export const OrderProvider = ({ children }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
-        .get("http://localhost:3000/orders/" + orderId)
+        .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/orders/` + orderId)
         .then((res) => {
           resolve(res);
           setLoading(false);

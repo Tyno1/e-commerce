@@ -48,7 +48,7 @@ export default function ProductPage() {
     error: reviewError,
     data: reviews,
     refresh,
-  } = useFetch(`http://localhost:3000/reviews/drug/${id}`);
+  } = useFetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews/drug/${id}`);
 
   const handleAddToCart = (e) => {
     e.preventDefault();

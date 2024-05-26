@@ -60,7 +60,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    getCartItemsByUserId(user.user._id)
+    getCartItemsByUserId(user?.user._id)
       .then((res) => {
         setCartItem(res.data);
       })

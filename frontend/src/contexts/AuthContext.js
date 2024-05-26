@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { createContext, useState } from "react";
 
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -11,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   const login = ({ email, password }) => {
     return new Promise((resolve, reject) => {
       axios
-        .post("http://localhost:3000/users/login", {
+        .post(`${process.env.REACT_APP_BACKEND_SERVER_URL}/users/login`, {
           email,
           password,
         })
@@ -30,7 +31,7 @@ export const AuthProvider = ({ children }) => {
   const register = (data) => {
     return new Promise((resolve, reject) => {
       axios
-        .post("http://localhost:3000/users/signup", data)
+        .post(`${process.env.REACT_APP_BACKEND_SERVER_URL}/users/signup`, data)
         .then((res) => {
           setUser(res.data);
           resolve(res);
