@@ -1,8 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { BsFillCartFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
-const DrugCard = ({ drug, widthStyle = "w-52", setCategoryId }) => {
+const DrugCard = ({
+  drug,
+  widthStyle = "w-52",
+  setCategoryId,
+  user,
+  AddToCart,
+  setPostResp,
+}) => {
+  const navigate = useNavigate();
+  const [payload, setPayload] = useState({
+    userId: user?.user?._id,
+    drugId: "",
+    quantity: "",
+  });
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+
+    const newPayload = {
+      ...payload,
+      drugId: drug._id,
+      quantity: 1,
+    };
+    AddToCart(newPayload)
+      .then((res) => {
+        setPostResp(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const titleCase = (str) => {
     str = str.toLowerCase().split(" ");
     for (var i = 0; i < str.length; i++) {
@@ -13,12 +43,23 @@ const DrugCard = ({ drug, widthStyle = "w-52", setCategoryId }) => {
 
   return (
     <div
-      className={`container max-w-sm h-72 flex ${widthStyle} rounded-lg text-teal-950 dark:bg-teal-950 shadow-2xl p-2 flex-col dark:hover:bg-teal-800`}
+      className={`container max-w-sm h-72 flex ${widthStyle} rounded-lg text-teal-950 relative dark:bg-teal-950 shadow-2xl p-2 flex-col dark:hover:bg-teal-800`}
     >
-      <Link
-        className="w-full h-full"
-        to={`/drugs/${drug?._id}`}
-        onClick={() => setCategoryId(drug?.category?._id)}
+      <button
+        onClick={handleAddToCart}
+        className="rounded-3xl bg-teal-900 h-7 w-7 hover:h-10 hover:w-10 flex items-center absolute bottom-4 right-4 justify-center shadow-xl"
+      >
+        <BsFillCartFill
+          size={10}
+          className="dark:text-orange-300 text-white shadow"
+        />
+      </button>
+      <div
+        className="w-full h-full cursor-pointer"
+        onClick={() => {
+          setCategoryId(drug?.category?._id);
+          navigate(`/drugs/${drug?._id}`);
+        }}
       >
         <div className="w-full p-2 border dark:border-orange-100 border-teal-900 rounded-lg h-[60%] cursor">
           <div className="image-container w-full bg-teal-900 rounded-lg h-full">
@@ -48,15 +89,9 @@ const DrugCard = ({ drug, widthStyle = "w-52", setCategoryId }) => {
                 </div>
               )}
             </strong>
-            <button className="rounded-3xl bg-teal-900 h-7 w-7 flex items-center justify-center shadow-xl">
-              <BsFillCartFill
-                size={10}
-                className="dark:text-orange-300 text-white shadow"
-              />
-            </button>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

@@ -123,6 +123,7 @@ const Cart = () => {
                 </div>
                 <form className="flex w-full items-center gap-4">
                   <QuantityButton
+                    handleDelete={handleDelete}
                     id={item._id}
                     initial={item.quantity}
                     optionValues={optionValues}
@@ -205,9 +206,9 @@ const Cart = () => {
                 </span>
               </p>
             </div>
-            <button className="w-full font-bold bg-orange-300 h-20 text-teal-950">
+            <div className="w-full font-bold bg-orange-300 h-20 text-teal-950">
               <PayButton cartItem={cartItem} />
-            </button>
+            </div>
           </div>
         </div>
       )}

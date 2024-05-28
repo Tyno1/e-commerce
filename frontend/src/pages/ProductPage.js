@@ -33,7 +33,6 @@ export default function ProductPage() {
   const [optionValue, setOptionValue] = useState(1);
 
   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const { AddToCart, getCartItemsByUserId, setCartItem } =
     useContext(CartContext);
@@ -48,7 +47,9 @@ export default function ProductPage() {
     error: reviewError,
     data: reviews,
     refresh,
-  } = useFetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews/drug/${id}`);
+  } = useFetch(
+    `${process.env.REACT_APP_BACKEND_SERVER_URL}/reviews/drug/${id}`
+  );
 
   const handleAddToCart = (e) => {
     e.preventDefault();

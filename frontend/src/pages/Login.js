@@ -21,14 +21,15 @@ export default function Login() {
           toast("Login Successful", { hideProgressBar: true });
         })
         .catch((error) => {
-          toast.error(error.message, { hideProgressBar: true });
+          console.log(error);
+          toast.error(error.response.data, { hideProgressBar: true });
         });
     }
   };
   return (
     <div className="login w-full h-[100vh] lg:px-60 px-4 pt-36 mb-20">
       <div className="container bg-gray-50 dark:bg-teal-900 rounded-lg shadow-xl min-h-[400px] w-full flex mx-auto">
-        <div className="rounded-lg h-[100%] hidden md:block w-[40%]">
+        <div className="rounded-lg min-h-[100%] hidden md:block w-[40%]">
           <img
             className="object-cover object-center h-[100%] w-full rounded-lg"
             src={LoginImg}
@@ -36,8 +37,8 @@ export default function Login() {
           />
         </div>
 
-        <div className="form md:p-4 h-full w-full md:w-[60%] h-[100%] flex flex-col items-center">
-          <h2 className="py-10 text-5xl font-medium dark:text-orange-300 text-teal-900">
+        <div className="form md:p-20 h-full flex-1 w-full h-[100%] flex flex-col gap-10 items-center">
+          <h2 className="text-5xl font-medium dark:text-orange-300 text-teal-900">
             Login
           </h2>
           <form
