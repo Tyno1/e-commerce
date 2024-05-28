@@ -1,5 +1,6 @@
 import React from "react";
 import { RiMedicineBottleFill } from "react-icons/ri";
+import { PiListChecksFill } from "react-icons/pi";
 
 export default function Categories({
   loading,
@@ -26,9 +27,12 @@ export default function Categories({
               setPageNumber(1);
               getDrugs();
             }}
-            className="hover:bg-teal-800 shadow-2xl flex p-4 rounded-lg gap-6 items-center text-sm justify-center w-full min-h-14 text-teal-900 dark:text-gray-50 dark:bg-teal-950 bg-gray-100"
+            className="hover:bg-teal-800 shadow-2xl flex p-4 rounded-lg gap-6 items-center text-sm justify-center w-full min-h-14 text-teal-900 dark:text-gray-50 dark:bg-teal-900 bg-gray-100"
           >
-            View All
+            <div>
+              <PiListChecksFill size={20} />
+            </div>
+            <h2 className="text-sm text-wrap text-start"> View All</h2>
           </button>
           {categories.map((category) => (
             <button
@@ -58,9 +62,12 @@ export default function Categories({
               setPageNumber(1);
               getDrugs();
             }}
-            className="hover:bg-teal-800 flex shadow-2xl p-2 rounded-lg gap-6 text-sm items-center justify-center w-full mb-2 min-h-14 text-teal-900 dark:text-gray-50 dark:bg-teal-950 bg-gray-100"
+            className="hover:bg-teal-800 flex shadow-2xl p-2 rounded-lg gap-6 text-sm items-center justify-center w-full mb-2 min-h-14 text-teal-900 dark:text-gray-50 dark:bg-teal-900 bg-gray-100"
           >
-            View All
+            <div>
+              <PiListChecksFill size={20} />
+            </div>
+            <h2 className="text-sm text-wrap text-start"> View All</h2>{" "}
           </button>
         </div>
       )}

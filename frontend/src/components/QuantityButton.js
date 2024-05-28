@@ -8,50 +8,60 @@ export default function QuantityButton({
   optionValue,
   setOptionValue,
   updateCartItems,
+  handleDelete,
 }) {
+  const decrement = (e) => {
+    e.preventDefault();
+    if (optionValue  && optionValue > 0) {
+      setOptionValue(Math.max(parseInt(optionValue, 10) - 1, 0));
+    } else if (optionValues && optionValues[id] > 0) {
+      const newValue = Math.max(
+        parseInt(optionValues[id] || initial, 10) - 1,
+        0
+      );
+      updateCartItems(newValue);
+      setOptionValues({
+        ...optionValues,
+        [id]: newValue,
+      });
+    }
+  };
+
+  const increment = (e) => {
+    e.preventDefault();
+    if (optionValue || optionValue === 0) {
+      setOptionValue(parseInt(optionValue, 10) + 1);
+    } else if (optionValues) {
+      const newValue = parseInt(optionValues[id] || initial, 10) + 1;
+      updateCartItems(newValue);
+      setOptionValues({
+        ...optionValues,
+        [id]: newValue,
+      });
+    }
+  };
+
+  const displayValue =
+    optionValues && optionValues[id]
+      ? optionValues[id]
+      : optionValue > 0
+      ? optionValue
+      : initial || 0;
+
   return (
     <div className="quantity flex w-[30%] h-12">
       <button
         className="h-full bg-orange-300 text-teal-950 w-[40%] rounded-l-lg"
-        onClick={(e) => {
-          e.preventDefault();
-          if (optionValue && optionValue > 0) {
-            setOptionValue(parseInt(initial || optionValue) - 1);
-          } else if (optionValues) {
-            updateCartItems(parseInt(optionValues[id] || initial) - 1);
-            setOptionValues({
-              ...optionValues,
-              [id]: parseInt(optionValues[id] || initial) - 1,
-            });
-          }
-        }}
+        onClick={decrement}
       >
         -
       </button>
       <div className="w-full h-full text-teal-950 px-2 bg-white flex items-center justify-center">
-        {optionValues && optionValues[id]
-          ? optionValues[id]
-          : initial && initial > 0
-          ? optionValue > 0
-            ? optionValue
-            : initial
-          : optionValue}
+        {displayValue}
       </div>
-
       <button
-        className="h-full bg-gray-200 bg-orange-300 text-teal-950 w-[40%] rounded-r-lg"
-        onClick={(e) => {
-          e.preventDefault();
-          if (optionValue || optionValue === 0) {
-            setOptionValue(parseInt(initial || optionValue) + 1);
-          } else if (optionValues) {
-            updateCartItems(parseInt(optionValues[id] || initial) + 1);
-            setOptionValues({
-              ...optionValues,
-              [id]: parseInt(optionValues[id] || initial) + 1,
-            });
-          }
-        }}
+        className="h-full bg-orange-300 text-teal-950 w-[40%] rounded-r-lg"
+        onClick={increment}
       >
         +
       </button>

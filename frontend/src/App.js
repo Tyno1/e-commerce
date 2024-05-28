@@ -30,6 +30,13 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import RootLayout from "./layouts/RootLayout";
 import OrdersView from "./pages/DashboardPages/OrdersView";
 import { OrderInfo } from "./pages/DashboardPages/OrderInfo";
+import Protected from "./components/Protected";
+import Dashboard from "./pages/admin/Dashboard";
+import ReviewsModerator from "./pages/admin/ReviewsModerator";
+import DrugsManager from "./pages/admin/DrugsManager";
+import DrugsUpload from "./pages/admin/DrugsUpload";
+import ScrollToTop from "./components/ScrollToTop";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -53,6 +60,12 @@ const router = createBrowserRouter(
         <Route path="voucher" element={<VoucherView />} />
         <Route path="saved-items" element={<SavedItemsViews />} />
         <Route path="account-management" element={<AccountManagementView />} />
+      </Route>
+      <Route element={<Protected />}>
+        <Route path="admin/dashboard" element={<Dashboard />} />
+        <Route path="admin/reviews-moderator" element={<ReviewsModerator />} />
+        <Route path="admin/drugs-manager" element={<DrugsManager />} />
+        <Route path="admin/drugs-upload" element={<DrugsUpload />} />
       </Route>
     </Route>
   )

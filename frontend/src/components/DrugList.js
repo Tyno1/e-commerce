@@ -7,12 +7,13 @@ const DrugList = ({
   drugLoading,
   drugError,
   drugs,
-  setDrugs,
   pageNumber,
   setPageNumber,
-  getDrugs,
   setCategoryId,
   meta,
+  user,
+  AddToCart,
+  setPostResp,
 }) => {
   const handlePreviousPage = () => {
     if (pageNumber > 1) {
@@ -49,6 +50,9 @@ const DrugList = ({
           <div className="druglist w-full h-full flex flex-row flex-wrap gap-4 p-2 items-center justify-around">
             {drugs?.map((drug) => (
               <DrugCard
+                setPostResp={setPostResp}
+                AddToCart={AddToCart}
+                user={user}
                 key={drug._id}
                 drug={drug}
                 setCategoryId={setCategoryId}

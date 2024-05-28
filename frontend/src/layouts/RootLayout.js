@@ -12,15 +12,15 @@ export default function RootLayout() {
   }
   return (
     <div className={`App ${darkMode ? "dark" : ""} `}>
-      <ScrollToTop />
       <div className="dark:bg-teal-950">
         <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
         <main>
+          <ScrollToTop />
           <Outlet darkMode={darkMode} />
+          <ToastContainer />
         </main>
 
-        <ToastContainer />
         <Footer />
       </div>
     </div>

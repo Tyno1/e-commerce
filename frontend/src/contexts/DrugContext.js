@@ -12,21 +12,23 @@ export const DrugProvider = ({ children }) => {
   const [categoryId, setCategoryId] = useState("");
   const [isSearched, setIsSearched] = useState(false);
   const [drugsByCategory, setDrugsByCategory] = useState("");
-  const [meta, setMeta] = useState()
+  const [meta, setMeta] = useState();
 
   const getDrugs = () => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
         .get(
-          `${process.env.REACT_APP_BACKEND_SERVER_URL}/drugs/all?page=${pageNumber}${
+          `${
+            process.env.REACT_APP_BACKEND_SERVER_URL
+          }/drugs/all?page=${pageNumber}${
             categoryId ? `&categoryId=${categoryId}` : ""
           }`
         )
         .then((res) => {
           setLoading(false);
           setDrugs(res.data.data);
-          setMeta(res.data)
+          setMeta(res.data);
           resolve(res);
         })
         .catch((err) => {
@@ -42,14 +44,16 @@ export const DrugProvider = ({ children }) => {
       setLoading(true);
       axios
         .get(
-          `${process.env.REACT_APP_BACKEND_SERVER_URL}/drugs/all?page=${pageNumber}${
+          `${
+            process.env.REACT_APP_BACKEND_SERVER_URL
+          }/drugs/all?page=${pageNumber}${
             categoryId ? `&categoryId=${categoryId}` : ""
           }`
         )
         .then((res) => {
           setLoading(false);
           setDrugsByCategory(res.data);
-          setMeta(res.data)
+          setMeta(res.data);
           resolve(res);
         })
         .catch((err) => {
@@ -81,7 +85,9 @@ export const DrugProvider = ({ children }) => {
     return new Promise((resolve, reject) => {
       setLoading(true);
       axios
-        .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/drugs/search?name=${name}`)
+        .get(
+          `${process.env.REACT_APP_BACKEND_SERVER_URL}/drugs/search?name=${name}`
+        )
         .then((res) => {
           setLoading(false);
           setDrugs(res.data);
@@ -119,7 +125,7 @@ export const DrugProvider = ({ children }) => {
         getDrugsByCategory,
         setDrugsByCategory,
         drugsByCategory,
-        meta
+        meta,
       }}
     >
       {children}

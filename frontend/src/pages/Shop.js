@@ -5,10 +5,15 @@ import Categories from "../components/Categories";
 import { CategoryContext } from "../contexts/CategoryContext";
 import DrugList from "../components/DrugList";
 import { DrugContext } from "../contexts/DrugContext";
-import { useParams, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthContext } from "../contexts/AuthContext";
+import { CartContext } from "../contexts/CartContext";
 
 export default function Shop() {
+  const { user } = useContext(AuthContext);
+  const { AddToCart, getCartItemsByUserId, setCartItem } =
+    useContext(CartContext);
+  const [postResp, setPostResp] = useState("");
   const { loading, error, categories } = useContext(CategoryContext);
   const [searchInput, setSearchInput] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -22,28 +27,30 @@ export default function Shop() {
     getDrugs,
     getDrugsByName,
     setCategoryId,
-    categoryId,
     isSearched,
     setIsSearched,
     meta,
   } = useContext(DrugContext);
 
   const handleSearchChange = (e) => {
-    setSearchInput(e.target.value);
+    setSearchInput(e.target.value.trim());
+    console.log(searchInput);
   };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    getDrugsByName(searchInput)
-      .then((res) => {
-        console.log(res.data);
-        setIsSearched(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsSearched(false);
-        toast(err?.response.data.error, { hideProgressBar: true });
-      });
+    if (searchInput.length > 0) {
+      getDrugsByName(searchInput.trim())
+        .then((res) => {
+          console.log(res.data);
+          setIsSearched(true);
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsSearched(false);
+          toast(err?.response.data.error, { hideProgressBar: true });
+        });
+    }
   };
   useEffect(() => {
     const query = window.location.search.split("=");
@@ -55,6 +62,15 @@ export default function Shop() {
     }
   }, []);
 
+  useEffect(() => {
+    getCartItemsByUserId(user?.user._id)
+      .then((res) => {
+        setCartItem(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [postResp]);
   return (
     <div className="pt-20 w-full">
       <div className="w-full min-h-[100vh] pt-10 flex flex-col items-center">
@@ -93,6 +109,9 @@ export default function Shop() {
 
           <div className="bg-gray-50 dark:bg-teal-950 rounded-xl ml-2 h-[100%] w-full md:w-[85%] border border-teal-900">
             <DrugList
+              setPostResp={setPostResp}
+              AddToCart={AddToCart}
+              user={user}
               drugError={drugError}
               drugLoading={drugLoading}
               drugs={drugs}
