@@ -33,13 +33,13 @@ export default function Shop() {
   } = useContext(DrugContext);
 
   const handleSearchChange = (e) => {
-    setSearchInput(e.target.value.trim());
+    setSearchInput(e.target.value);
     console.log(searchInput);
   };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    if (searchInput.length > 0) {
+    if (searchInput.trim().length > 0) {
       getDrugsByName(searchInput.trim())
         .then((res) => {
           console.log(res.data);
@@ -50,6 +50,8 @@ export default function Shop() {
           setIsSearched(false);
           toast(err?.response.data.error, { hideProgressBar: true });
         });
+    }else {
+      toast("Please enter a search term", { hideProgressBar: true });
     }
   };
   useEffect(() => {

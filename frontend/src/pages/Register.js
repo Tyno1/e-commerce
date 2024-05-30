@@ -62,7 +62,7 @@ export default function Register() {
         </div>
 
         <div className="form md:p-20 h-full w-full flex-1 h-[100%] flex flex-col gap-10 items-center">
-          <h2 className="text-5xl font-medium dark:text-orange-300 text-teal-900">
+          <h2 className="w-full text-center text-5xl font-medium dark:text-orange-300 text-teal-900">
             Register
           </h2>
           <form
