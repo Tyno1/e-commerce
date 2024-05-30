@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function QuantityButton({
   id,
@@ -10,17 +10,24 @@ export default function QuantityButton({
   updateCartItems,
   handleDelete,
 }) {
+  const [values, setValues] = useState(optionValues)
+
   const decrement = (e) => {
     e.preventDefault();
     if (optionValue  && optionValue > 0) {
       setOptionValue(Math.max(parseInt(optionValue, 10) - 1, 0));
-    } else if (optionValues && optionValues[id] > 0) {
+    } else if (optionValues) {
       const newValue = Math.max(
         parseInt(optionValues[id] || initial, 10) - 1,
         0
       );
       updateCartItems(newValue);
       setOptionValues({
+        ...optionValues,
+        [id]: newValue,
+      });
+
+      setValues({
         ...optionValues,
         [id]: newValue,
       });
@@ -38,12 +45,17 @@ export default function QuantityButton({
         ...optionValues,
         [id]: newValue,
       });
+
+      setValues({
+        ...optionValues,
+        [id]: newValue,
+      });
     }
   };
 
   const displayValue =
-    optionValues && optionValues[id]
-      ? optionValues[id]
+    values && values[id]
+      ? values[id]
       : optionValue > 0
       ? optionValue
       : initial || 0;

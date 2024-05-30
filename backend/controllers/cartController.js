@@ -11,7 +11,6 @@ exports.createCartItem = async (req, res) => {
       userId,
       drugId,
     });
-    console.log(existingCartItem);
 
     if (existingCartItem) {
       // If it exists, update the quantity

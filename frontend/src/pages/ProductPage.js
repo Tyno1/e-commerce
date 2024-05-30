@@ -34,8 +34,13 @@ export default function ProductPage() {
 
   const navigate = useNavigate();
 
-  const { AddToCart, getCartItemsByUserId, setCartItem } =
-    useContext(CartContext);
+  const {
+    AddToCart,
+    getCartItemsByUserId,
+    setCartItem,
+    localCart,
+    setLocalCart,
+  } = useContext(CartContext);
   const [postResp, setPostResp] = useState("");
   const [payload, setPayload] = useState({
     userId: user?.user?._id,
@@ -53,21 +58,49 @@ export default function ProductPage() {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+    setLocalCart((prevCart) => {
+      // Find if the item already exists in the cart
+      const existingItem = prevCart.find((item) => item.drugId === drug._id);
 
-    const newPayload = {
-      ...payload,
-      drugId: drug._id,
-      quantity: optionValue,
-    };
-    if (newPayload && newPayload.quantity !== 0) {
-      AddToCart(newPayload)
-        .then((res) => {
-          setPostResp(res.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
+      if (existingItem) {
+        // If the item exists, update its quantity
+        return prevCart.map((item) =>
+          item.drugId === drug._id
+            ? { ...item, quantity: item.quantity + optionValue }
+            : item
+        );
+      } else {
+        // If the item does not exist, add the new item
+        return [
+          ...prevCart,
+          {
+            drugId: drug._id,
+            quantity: optionValue,
+            name: drug.name,
+            drugType: drug.category.name,
+            price: drug.price.amount,
+            dose: drug.dose,
+            manufacturer: drug.manufacturer,
+            
+          },
+        ];
+      }
+    });
+
+    // const newPayload = {
+    //   ...payload,
+    //   drugId: drug._id,
+    //   quantity: optionValue,
+    // };
+    // if (newPayload && newPayload.quantity !== 0) {
+    //   AddToCart(newPayload)
+    //     .then((res) => {
+    //       setPostResp(res.data);
+    //     })
+    //     .catch((err) => {
+    //       console.error(err);
+    //     });
+    // }
   };
 
   const handleByCategory = (drug) => {

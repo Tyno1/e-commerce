@@ -14,7 +14,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
   const mobileRef = useRef();
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { cartItem } = useContext(CartContext);
+  const { cartItem, localCart, setLocalCart } = useContext(CartContext);
 
   useEffect(() => {
     const menuHandler = (e) => {
@@ -153,9 +153,9 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
             className="dark:hover:text-orange-500 relative"
           >
             <GrCart size={30} />
-            {cartItem && cartItem.length > 0 && (
+            {localCart && localCart.length > 0 && (
               <div className="absolute border-2 border-teal-700 flex items-center justify-center bg-white rounded-2xl w-7 h-7 top-[-14px] right-[-14px]">
-                <p className="font-bold text-teal-950">{cartItem?.length}</p>
+                <p className="font-bold text-teal-950">{localCart?.length}</p>
               </div>
             )}
           </button>

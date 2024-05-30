@@ -13,6 +13,8 @@ const Cart = () => {
     DeleteFromCart,
     getCartItemsByUserId,
     UpdateCart,
+    localCart,
+    setLocalCart,
   } = useContext(CartContext);
 
   const { user } = useContext(AuthContext);
@@ -31,7 +33,7 @@ const Cart = () => {
       }, delay);
     };
   };
-
+console.log(localCart);
   const handleDelete = (cartId) => (e) => {
     e.preventDefault();
     DeleteFromCart(cartId)
@@ -48,7 +50,7 @@ const Cart = () => {
       const { quantity, status, _id: cartId } = payload;
       UpdateCart({ quantity, status }, cartId)
         .then((res) => {
-          setUpdateResp(res.data);
+          // setUpdateResp(res.data);
           console.log(res.data);
         })
         .catch((err) => {
@@ -104,7 +106,7 @@ const Cart = () => {
                         Unit Price: <span>£</span>
                         <span className="ml-1">
                           {Math.round(
-                            (item?.drugId?.price.amount + Number.EPSILON) * 100
+                            item?.drugId.price.amount * 100
                           ) / 100}
                         </span>
                       </p>
@@ -112,9 +114,7 @@ const Cart = () => {
                         Total Price: <span>£</span>
                         <span className="ml-1">
                           {Math.round(
-                            (item?.drugId?.price.amount + Number.EPSILON) *
-                              item?.quantity *
-                              100
+                            item?.drugId.price.amount * item?.quantity * 100
                           ) / 100}
                         </span>
                       </p>
@@ -168,9 +168,7 @@ const Cart = () => {
                   {cartItem.reduce((accumulator, item) => {
                     return (accumulator +=
                       Math.round(
-                        (item?.drugId.price.amount + Number.EPSILON) *
-                          item?.quantity *
-                          100
+                        item?.drugId.price.amount * item?.quantity * 100
                       ) / 100);
                   }, 0)}
                 </span>
@@ -198,9 +196,7 @@ const Cart = () => {
                   {cartItem.reduce((accumulator, item) => {
                     return (accumulator +=
                       Math.round(
-                        (item?.drugId.price.amount + Number.EPSILON) *
-                          item?.quantity *
-                          100
+                        item?.drugId.price.amount * item?.quantity * 100
                       ) / 100);
                   }, 0)}
                 </span>

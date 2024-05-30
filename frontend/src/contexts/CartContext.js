@@ -9,6 +9,7 @@ export const CartProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [cartItem, setCartItem] = useState("");
+  const [localCart, setLocalCart] = useState([]);
   const { user } = useContext(AuthContext);
 
   const AddToCart = (payload) => {
@@ -105,6 +106,8 @@ export const CartProvider = ({ children }) => {
         setCartItem,
         DeleteFromCart,
         UpdateCart,
+        localCart,
+        setLocalCart,
       }}
     >
       {children}

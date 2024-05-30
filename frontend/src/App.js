@@ -37,6 +37,7 @@ import DrugsManager from "./pages/admin/DrugsManager";
 import DrugsUpload from "./pages/admin/DrugsUpload";
 import ScrollToTop from "./components/ScrollToTop";
 import { ToastContainer } from "react-toastify";
+import GetHelp from "./pages/DashboardPages/GetHelp";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -59,6 +60,7 @@ const router = createBrowserRouter(
         <Route path="inbox" element={<InboxView />} />
         <Route path="voucher" element={<VoucherView />} />
         <Route path="saved-items" element={<SavedItemsViews />} />
+        <Route path="get-help" element={<GetHelp />} />
         <Route path="account-management" element={<AccountManagementView />} />
       </Route>
       <Route element={<Protected />}>
