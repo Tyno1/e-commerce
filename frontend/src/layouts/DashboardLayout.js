@@ -4,6 +4,7 @@ import { RiBus2Fill } from "react-icons/ri";
 import { FaInbox } from "react-icons/fa6";
 import { RiCoupon3Fill } from "react-icons/ri";
 import { MdOutlineSaveAlt, MdManageAccounts, MdLogout } from "react-icons/md";
+import { RiCustomerServiceFill } from "react-icons/ri";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const DashboardMenuItem = ({ icon, text, onClick, selectedMenu }) => (
@@ -64,6 +65,13 @@ export default function DashboardLayout() {
           text="Saved items"
           onClick={() => handleSelectMenu("Saved items", "saved-items")}
         />
+        <DashboardMenuItem
+          icon={<RiCustomerServiceFill size={28} />}
+          selectedMenu={selectedMenu}
+          text="Get Help"
+          onClick={() => handleSelectMenu("Get Help", "get-help")}
+        />
+
         <DashboardMenuItem
           icon={<MdManageAccounts size={28} />}
           selectedMenu={selectedMenu}

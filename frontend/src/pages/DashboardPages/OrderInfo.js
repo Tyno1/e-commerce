@@ -35,7 +35,7 @@ export const OrderInfo = () => {
             </div>
             <div className="order-date flex gap-2">
               <p>Order Date:</p>
-              <p>{order?.createdAt}</p>
+              <p>{ new Date(order?.createdAt).toLocaleDateString()}</p>
             </div>
             <div className="order-total flex gap-2">
               <p>Total:</p>
