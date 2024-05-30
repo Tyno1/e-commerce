@@ -10,8 +10,8 @@ exports.createCartItem = async (req, res) => {
     let existingCartItem = await Cart.findOne({
       userId,
       drugId,
-      status: pending._id,
     });
+    console.log(existingCartItem);
 
     if (existingCartItem) {
       // If it exists, update the quantity
