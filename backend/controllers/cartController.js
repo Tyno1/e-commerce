@@ -6,14 +6,28 @@ exports.createCartItem = async (req, res) => {
   try {
     const { userId, drugId, quantity, status } = req.body;
     const pending = await Status.findOne({ name: "pending" });
-    const cartItem = new Cart({
+
+    let existingCartItem = await Cart.findOne({
       userId,
       drugId,
-      quantity,
       status: pending._id,
     });
-    await cartItem.save();
-    res.status(201).json(cartItem);
+
+    if (existingCartItem) {
+      // If it exists, update the quantity
+      existingCartItem.quantity += quantity;
+      await existingCartItem.save();
+      res.status(200).json(existingCartItem);
+    } else {
+      const newCartItem = new Cart({
+        userId,
+        drugId,
+        quantity,
+        status: pending._id,
+      });
+      await newCartItem.save();
+      res.status(201).json(cartItem);
+    }
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
@@ -28,7 +42,7 @@ exports.getCartItemsByUserId = async (req, res) => {
         path: "drugId",
         populate: {
           path: "category",
-          model: "Category", 
+          model: "Category",
         },
       })
       .populate("status");
