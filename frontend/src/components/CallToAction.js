@@ -4,7 +4,7 @@ import banner from "../images/banner.png";
 
 export default function CallToAction() {
   return (
-    <div className="call-to-action no-wrap h-72 mb-20">
+    <div className="call-to-action no-wrap h-72">
       <div className="h-[100%] bg-teal-950 flex flex-col items-center justify-center rounded-lg">
         <img
           className="object-cover object-center h-[100%] w-full relative"

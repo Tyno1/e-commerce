@@ -4,7 +4,7 @@ import HeroImg from "../images/nat122.jpg";
 
 export default function Hero() {
   return (
-    <div className="hero w-full min-h-[95vh] px-10 overflow-hidden pt-40 md:pt-32 mb:20 sm:mb-40 flex items-center justify-between">
+    <div className="hero w-full min-h-[100vh] md:h-[95vh] px-10 overflow-hidden pt-40 md:pt-32 mb:20 sm:mb-40 flex items-center justify-between">
       <div className="hero-text w-[100%] md:w-[60%] flex flex-col items-left">
         <p>LONAX & CO brings to you</p>
         <div className="h-0.5 mt-2 w-[30%] dark:bg-orange-400 bg-teal-700"></div>
