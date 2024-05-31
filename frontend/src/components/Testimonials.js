@@ -4,6 +4,7 @@ import image1 from "../images/profile-pictures/christopher-campbell-rDEOVtE7vOs-
 import image2 from "../images/profile-pictures/joseph-gonzalez-iFgRcqHznqg-unsplash.jpg";
 import image3 from "../images/profile-pictures/prince-akachi-i2hoD-C2RUA-unsplash.jpg";
 import image4 from "../images/profile-pictures/foto-sushi-6anudmpILw4-unsplash.jpg";
+import { CgArrowsHAlt } from "react-icons/cg";
 
 const Testimonials = () => {
   return (
@@ -150,6 +151,11 @@ const Testimonials = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-10 text-2xl flex flex-row items-center gap-5 text-teal-100" >
+          <p>Slide and Explore</p>
+          <CgArrowsHAlt size={60} />
         </div>
       </div>
     </div>
