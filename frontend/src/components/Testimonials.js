@@ -3,6 +3,7 @@ import { FaQuoteRight } from "react-icons/fa";
 import image1 from "../images/profile-pictures/christopher-campbell-rDEOVtE7vOs-unsplash.jpg";
 import image2 from "../images/profile-pictures/joseph-gonzalez-iFgRcqHznqg-unsplash.jpg";
 import image3 from "../images/profile-pictures/prince-akachi-i2hoD-C2RUA-unsplash.jpg";
+import image4 from "../images/profile-pictures/foto-sushi-6anudmpILw4-unsplash.jpg";
 
 const Testimonials = () => {
   return (
@@ -10,8 +11,8 @@ const Testimonials = () => {
       <div className="flex flex-col items-center h-full ">
         <div className="px-6 leading-6">
           <h3 className="text-5xl font-bold text-center leading-tight text-teal-950 dark:text-white">
-            What Are <span className="dark:text-orange-300">Customers </span> 
-             Saying?
+            What Are <span className="dark:text-orange-300">Customers </span>
+            Saying?
           </h3>
           <p className="text-teal-950 text-center dark:text-white mt-2">
             Here's a sneak peak at the beautiful things our customers are saying
@@ -118,26 +119,25 @@ const Testimonials = () => {
             </div>
           </div>
 
-          {/* card 3 */}
+          {/* card 4 */}
           <div className="bg-white p-8 min-w-[400px] md:min-w-[500px] min-h-[350px] rounded shadow-lg flex flex-col justify-between">
             <p className="text text-teal-950 w-full">
-              "I am thoroughly impressed with this medical e-commerce platform.
-              The range of products available is extensive, and I found
-              everything I needed without any hassle. This site has made
-              purchasing medical supplies online a breeze!"
+              " The layout is intuitive, and finding the products I needed was
+              simple. The detailed information and reviews on each product page
+              helped me feel confident in my choices. "
             </p>
             <div className="bottom-section flex justify-between items-center">
               <div className="client-profile flex gap-4 items-center">
                 <div className="image-container w-20 h-20 rounded-2xl">
                   <img
                     className="w-full h-full object-cover object-center rounded-2xl"
-                    src={image3}
+                    src={image4}
                     alt="User1_Image"
                   />
                 </div>
                 <div>
                   <p className="client-name text-teal-950 text-lg font-bold">
-                    Amaka Freda
+                    Martin Gondales
                   </p>
                   <p className="text-teal-950 text-sm">
                     Liverpool, United Kingdom

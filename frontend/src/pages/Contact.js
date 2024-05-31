@@ -19,11 +19,11 @@ export default function Contact({ darkMode }) {
 
             <div className="flex items-center mt-5">
               <IoLocation size={20} style={{ marginRight: "20px" }} />
-              <span className="text-sm">Lagos, Nigeria </span>
+              <span className="text-sm">Cardiff, Wales CF10 </span>
             </div>
             <div className="flex items-center mt-5">
               <FaPhoneAlt size={20} style={{ marginRight: "20px" }} />
-              <span className="text-sm">+93 749 99 65 50</span>
+              <span className="text-sm">+44 790 945 3041</span>
             </div>
             <div className="flex items-center mt-5">
               <MdOutlineSupportAgent

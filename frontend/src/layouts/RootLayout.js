@@ -20,7 +20,6 @@ export default function RootLayout() {
           <Outlet darkMode={darkMode} />
           <ToastContainer />
         </main>
-
         <Footer />
       </div>
     </div>
