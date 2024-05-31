@@ -53,7 +53,7 @@ export default function Register() {
   return (
     <div className="register w-full min-h-[100vh] lg:px-60 px-4 pt-36 mb-20">
       <div className="container bg-gray-50 dark:bg-teal-900 rounded-lg shadow-xl min-h-[400px] w-full flex mx-auto">
-        <div className="rounded-lg min-h-[100%] hidden md:block w-[40%]">
+        <div className="rounded-lg min-h-[100%] hidden md:block min-w-[40%]">
           <img
             className="object-cover object-center h-[100%] w-full rounded-lg"
             src={LoginImg}
@@ -61,7 +61,7 @@ export default function Register() {
           />
         </div>
 
-        <div className="form md:p-20 h-full w-full flex-1 h-[100%] flex flex-col gap-10 items-center">
+        <div className="form p-6 md:p-20 h-full w-[60%] flex-1 h-[100%] flex flex-col gap-10 items-center">
           <h2 className="w-full text-center text-5xl font-medium dark:text-orange-300 text-teal-900">
             Register
           </h2>
@@ -69,8 +69,8 @@ export default function Register() {
             className="flex flex-col gap-8 items-center w-full px-2 h-full md:px-4"
             onSubmit={handleRegister}
           >
-            <div className="flex w-full flex-col md:flex-row gap-8 ">
-              <div className="flex flex-col w-[100%] gap-2">
+            <div className="flex w-full flex-col md:flex-row items-center gap-8 justify-between">
+              <div className="flex flex-col w-[100%] md:w-[45%] gap-2">
                 <label
                   htmlFor="first-name"
                   className="fname dark:text-teal-50 text-teal-900 text-sm"
@@ -78,7 +78,7 @@ export default function Register() {
                   First Name
                 </label>
                 <input
-                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900"
+                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700 "
                   type="text"
                   placeholder="jane"
                   name="firstName"
@@ -87,12 +87,12 @@ export default function Register() {
                 />
               </div>
 
-              <div className="flex flex-col w-[100%] gap-2">
+              <div className="flex flex-col w-[100%] md:w-[45%] gap-2">
                 <label htmlFor="last-name" className="fname text-sm">
                   Last Name
                 </label>
                 <input
-                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900"
+                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700 "
                   type="text"
                   placeholder="Doe"
                   name="lastName"
@@ -107,7 +107,7 @@ export default function Register() {
                 Email
               </label>
               <input
-                className="py-2 px-4 rounded-lg shadow-xl"
+                className="py-2 px-4 rounded-lg shadow-xl focus:outline-none focus:ring focus:ring-teal-700 "
                 type="text"
                 placeholder="janedoe@mail.com"
                 value={payload.email}
@@ -115,7 +115,6 @@ export default function Register() {
                 onChange={handleChange}
               />
             </div>
-
 
             <div className="flex flex-col w-[100%] gap-2">
               <label
@@ -125,7 +124,7 @@ export default function Register() {
                 Username
               </label>
               <input
-                className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900"
+                className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700"
                 type="text"
                 placeholder="jane232"
                 name="username"
@@ -139,7 +138,7 @@ export default function Register() {
                 Phone Number
               </label>
               <input
-                className="py-2 px-4 rounded-lg shadow-xl"
+                className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700 "
                 type="number"
                 placeholder="07******98"
                 value={payload.phoneNumber}
@@ -148,13 +147,13 @@ export default function Register() {
               />
             </div>
 
-            <div className="flex w-full flex-col md:flex-row items-center gap-4 justify-between">
+            <div className="flex w-full flex-col md:flex-row items-center gap-8 justify-between">
               <div className="flex flex-col w-[100%] md:w-[45%] gap-2">
                 <label cl htmlFor="password" className="text-sm">
                   Password
                 </label>
                 <input
-                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900"
+                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700 "
                   type="password"
                   placeholder="************"
                   value={payload.password}
@@ -168,7 +167,7 @@ export default function Register() {
                   Confirm Password
                 </label>
                 <input
-                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900"
+                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700 "
                   type="password"
                   placeholder="************"
                   value={confirmPassword}
@@ -177,7 +176,7 @@ export default function Register() {
               </div>
             </div>
 
-            <button className="shadow-xl border border-2 bg-teal-900 dark:bg-teal-950 border-orange-300 text-orange-300 rounded-xl px-6 py-3 focus:outline-none active:bg-teal-800 active:text-orange-300">
+            <button className="shadow-xl border border-2 bg-teal-900 dark:bg-teal-950 border-orange-300 text-orange-300 rounded-xl px-6 py-3 focus:outline-none active:bg-teal-900 active:text-orange-300">
               Register Account
             </button>
           </form>
