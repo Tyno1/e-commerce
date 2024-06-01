@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const DrugCard = ({
   drug,
-  widthStyle = "w-52",
+  widthStyle = "w-36 md:w-48",
   setCategoryId,
   user,
   AddToCart,
@@ -44,7 +44,7 @@ const DrugCard = ({
 
   return (
     <div
-      className={`container w-36 md:w-48 h-72 flex ${widthStyle} rounded-lg text-teal-950 relative dark:bg-teal-950 shadow-2xl p-2 flex-col dark:hover:bg-teal-800`}
+      className={`h-72 flex ${widthStyle} rounded-lg text-teal-950 relative dark:bg-teal-950 shadow-2xl p-2 flex-col dark:hover:bg-teal-800`}
     >
       <button
         onClick={handleAddToCart}
