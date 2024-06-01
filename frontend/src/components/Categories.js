@@ -27,7 +27,7 @@ export default function Categories({
               setPageNumber(1);
               getDrugs();
             }}
-            className=" hover:bg-teal-800 shadow-2xl flex p-4 rounded-lg gap-6 items-center text-sm justify-center w-full h-10 md:min-h-14 text-teal-900 dark:text-gray-50 dark:bg-teal-900 bg-gray-100"
+            className="hover:bg-teal-800 shadow-2xl flex p-4 rounded-lg gap-6 items-center text-sm justify-center w-full h-10 md:min-h-14 text-teal-900 dark:text-gray-50 dark:bg-teal-900 bg-gray-100"
           >
             <div>
               <PiListChecksFill size={20} />
@@ -43,16 +43,16 @@ export default function Categories({
                 setPageNumber(1);
               }}
               key={category._id}
-              className={`flex p-4 md:flex-1 rounded-lg gap-4 h-10 md:min-h-14 items-center shadow-2xl hover:bg-teal-800 ${
+              className={`flex p-4 md:flex-1 text-xs md:text-sm rounded-lg gap-2 md:gap-4 h-10 md:min-h-14 items-center shadow-2xl hover:bg-teal-900 hover:text-teal-50 dark:hover:bg-teal-800  ${
                 selectedCategory === category._id
                   ? "dark:bg-orange-300 dark:text-teal-950 text-teal-50 bg-teal-950"
                   : "text-teal-900 dark:text-teal-50 dark:bg-teal-950 bg-gray-100"
-              }`} wo
+              }`}
             >
-              <div>
+              <div className="hidden md:flex">
                 <RiMedicineBottleFill size={20} />
               </div>
-              <h2 className="text-sm md:text-wrap text-start">{category.name}</h2>
+              <h2 className=" md:text-wrap text-start">{category.name}</h2>
             </button>
           ))}
           <button

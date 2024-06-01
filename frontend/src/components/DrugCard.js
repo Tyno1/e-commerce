@@ -19,35 +19,36 @@ const DrugCard = ({
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-
-    const newPayload = {
-      ...payload,
-      drugId: drug._id,
-      quantity: 1,
-    };
-    AddToCart(newPayload)
-      .then((res) => {
-        setPostResp(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (payload.userId) {
+      const newPayload = {
+        ...payload,
+        drugId: drug._id,
+        quantity: 1,
+      };
+      AddToCart(newPayload)
+        .then((res) => {
+          setPostResp(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   const titleCase = (str) => {
-    str = str.toLowerCase().split(" ");
-    for (var i = 0; i < str.length; i++) {
+    str = str?.toLowerCase().split(" ");
+    for (var i = 0; i < str?.length; i++) {
       str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
     }
-    return str.join(" ");
+    return str?.join(" ");
   };
 
   return (
     <div
-      className={`container max-w-sm h-72 flex ${widthStyle} rounded-lg text-teal-950 relative dark:bg-teal-950 shadow-2xl p-2 flex-col dark:hover:bg-teal-800`}
+      className={`container w-40 md:w-48 h-72 flex ${widthStyle} rounded-lg text-teal-950 relative dark:bg-teal-950 shadow-2xl p-2 flex-col dark:hover:bg-teal-800`}
     >
       <button
         onClick={handleAddToCart}
-        className="rounded-3xl bg-teal-900 h-7 w-7 hover:h-10 hover:w-10 flex items-center absolute bottom-4 right-4 justify-center shadow-xl"
+        className="rounded-3xl bg-teal-900 h-7 w-7 hover:h-10 hover:w-10 flex items-center absolute bottom-2 right-2 md:bottom-4 md:right-4 justify-center shadow-xl"
       >
         <BsFillCartFill
           size={10}
@@ -73,21 +74,22 @@ const DrugCard = ({
 
         <div className="texts px-2 mt-2 flex flex-col h-[40%] w-full justify-between dark:text-teal-50 text-teal-950">
           <div className="top-texts">
-            <p className="text-sm font-bold mb-2 truncate">
-              {titleCase(drug?.name)}
+            <p className="text-xs md:text-sm font-bold mb-2 truncate">
+              {titleCase(drug?.name) || `Drug Name`}
             </p>
-            <p className="text-sm">
-              <span className="font-bold">Dose</span> - {drug?.dose}
+            <p className="text-xs md:text-sm">
+              <span className="font-bold">Dose</span> - {drug?.dose || `00mg `}
             </p>
           </div>
           <div className="bottom-text mb-2 flex justify-between items-center">
             <strong className="text-lg">
-              {drug?.price && (
-                <div className="text-sm">
+              {(drug?.price && (
+                <div className="text-xs md:text-sm">
                   <span>{drug?.price.currency && "£"}</span>{" "}
                   <span>{drug?.price.amount}</span>
                 </div>
-              )}
+              )) ||
+                `£100`}
             </strong>
           </div>
         </div>

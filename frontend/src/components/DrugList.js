@@ -33,7 +33,7 @@ const DrugList = ({
   };
 
   return (
-    <div className="container w-full h-full flex flex-col flex-wrap gap-4 p-2 items-center justify-around">
+    <div className="container w-full h-full flex flex-col flex-wrap gap-4 p-2 items-center justify-around mx-auto">
       {(drugLoading && (
         <div className="mx-auto">
           <ClipLoader
