@@ -8,6 +8,7 @@ import { DrugContext } from "../contexts/DrugContext";
 import { toast } from "react-toastify";
 import { AuthContext } from "../contexts/AuthContext";
 import { CartContext } from "../contexts/CartContext";
+import { FaSearch } from "react-icons/fa";
 
 export default function Shop() {
   const { user } = useContext(AuthContext);
@@ -50,7 +51,7 @@ export default function Shop() {
           setIsSearched(false);
           toast(err?.response.data.error, { hideProgressBar: true });
         });
-    }else {
+    } else {
       toast("Please enter a search term", { hideProgressBar: true });
     }
   };
@@ -76,9 +77,9 @@ export default function Shop() {
   return (
     <div className="pt-20 w-full">
       <div className="w-full min-h-[100vh] pt-10 flex flex-col items-center">
-        <form className="px-10 search-bar min-w-full md:min-w-[80%] lg:min-w-[70%] flex items-center">
+        <form className="px-10 md:px-40 search-bar w-full md:min-w-[80%] lg:min-w-[70%] flex items-center">
           <input
-            className="flex grow rounded-lg bg-teal-50 text-teal-950 px-4 py-3 focus:outline-teal-800 border-2 border-gray-300"
+            className="flex grow rounded-lg placeholder:text-sm bg-teal-50 text-teal-950 px-4 py-3 focus:outline-teal-800 border-2 border-gray-300"
             type="text"
             name="search"
             value={searchInput}
@@ -87,14 +88,16 @@ export default function Shop() {
           />
           <button
             onClick={handleSearchSubmit}
-            className="ml-4 shadow-xl border border-2 bg-teal-900 dark:bg-teal-950 border-orange-300 text-orange-300 rounded-xl px-6 py-3 focus:outline-none active:bg-teal-800 active:text-orange-300"
+            className="ml-4 shadow-xl border border-2 bg-teal-900 bg-teal-950 border-orange-300 text-teal-50 dark:text-orange-300 rounded-xl px-6 py-3 focus:outline-none active:bg-teal-800 active:text-orange-300"
           >
-            search
+            <p className="hidden md:flex">search</p>
+            <div className="search-icon md:hidden">
+              <FaSearch />
+            </div>
           </button>
         </form>
 
         <div className="flex min-h-[100vh] w-full p-4 items-start flex-col md:flex-row items-center md:items-start gap-4 md:gap-0">
-
           <div className="w-full md:w-[250px] flex flex-row md:flex-col gap-4 ">
             <Categories
               loading={loading}

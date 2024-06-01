@@ -51,12 +51,12 @@ const FrequentlyAsked = () => {
     <div className="Faq min-h-[70vh] w-[100%] py-10 bg-teal-900 dark:bg-teal-950  flex flex-col items-center justify-center">
       <div className="top-section flex flex-col items-center text-white">
         <p>FAQ</p>
-        <h3 className="text-5xl font-bold text-center leading-tight ">
+        <h3 className="text-3xl md:text-5xl font-bold text-center leading-tight ">
           Frequently Asked Questions
         </h3>
       </div>
 
-      <div className="bottom-section w-full mx-auto p-10">
+      <div className="bottom-section w-full mx-auto px-4 py-8 md:px-10 md:py-10">
         {accordionData.map((item, index) => (
           <AccordionItem
             key={index}
