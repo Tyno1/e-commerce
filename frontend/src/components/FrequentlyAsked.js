@@ -13,7 +13,7 @@ const FrequentlyAsked = () => {
           <FaChevronDown size={20} />
         </button>
         <div
-          className={`transition-all leading-normal text-lg duration-300 ease-in-out overflow-hidden ${
+          className={`transition-all text-white leading-normal text-lg duration-300 ease-in-out overflow-hidden ${
             isOpen ? "max-h-screen px-10 p-4" : "max-h-0"
           }`}
         >
@@ -48,10 +48,10 @@ const FrequentlyAsked = () => {
   ];
 
   return (
-    <div className="Faq min-h-[70vh] w-[100%] my-20 py-10 bg-teal-950 flex flex-col items-center justify-center">
-      <div className="top-section flex flex-col items-center">
+    <div className="Faq min-h-[70vh] w-[100%] py-10 bg-teal-900 dark:bg-teal-950  flex flex-col items-center justify-center">
+      <div className="top-section flex flex-col items-center text-white">
         <p>FAQ</p>
-        <h3 className="text-5xl font-bold text-center leading-tight text-teal-950 dark:text-white">
+        <h3 className="text-5xl font-bold text-center leading-tight ">
           Frequently Asked Questions
         </h3>
       </div>

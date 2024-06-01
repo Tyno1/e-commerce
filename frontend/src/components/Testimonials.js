@@ -8,10 +8,10 @@ import { CgArrowsHAlt } from "react-icons/cg";
 
 const Testimonials = () => {
   return (
-    <div className="trending min-h-[70vh] w-[100%] my-20 py-10 bg-teal-900 ">
+    <div className="trending min-h-[70vh] w-[100%] py-10 bg-teal-950 dark:bg-teal-900 ">
       <div className="flex flex-col items-center h-full ">
         <div className="px-6 leading-6">
-          <h3 className="text-5xl font-bold text-center leading-tight text-white">
+          <h3 className="text-3xl md:text-5xl font-bold text-center leading-tight text-white">
             What Are <span className="dark:text-orange-300">Customers </span>
             Saying?
           </h3>
