@@ -8,7 +8,7 @@ export default function Features() {
   return (
     <div class="flex flex-wrap justify-center mt-10 gap-8 items-center">
       {/* <!-- card 1 --> */}
-      <div class="max-w-sm h-72 flex w-[80%] md:w-60 dark:text-teal-50 text-teal-900 p-6 flex-col justify-between items-center ">
+      <div class="max-w-sm h-60 flex w-[80%] md:w-60 dark:text-teal-50 text-teal-900 p-6 flex-col justify-between items-center ">
         <div className="text-center sm:text-left">
           <IoMdSettings
             className="dark:text-orange-300 mx-auto sm:mx-0"
@@ -30,7 +30,7 @@ export default function Features() {
       </div>
       <div className="hidden lg:block border-[1px] h-52 dark:border-orange-100 border-teal-900"></div>
       {/* <!-- card 2 --> */}
-      <div class="max-w-sm h-72 flex w-[80%] md:w-60 dark:text-teal-50 text-teal-900 p-6 flex-col justify-between items-center">
+      <div class="max-w-sm h-60 flex w-[80%] md:w-60 dark:text-teal-50 text-teal-900 p-6 flex-col justify-between items-center">
       <div className="text-center sm:text-left">
           <IoMdSettings
             className="dark:text-orange-300 mx-auto sm:mx-0"
@@ -53,7 +53,7 @@ export default function Features() {
       <div className="hidden lg:block border-[1px] h-52 dark:border-orange-100 border-teal-900"></div>
 
       {/* <!-- card 3 --> */}
-      <div class="max-w-sm h-72 flex w-[80%] md:w-60 dark:text-teal-50 text-teal-900 p-6 flex-col justify-between items-center">
+      <div class="max-w-sm h-60 flex w-[80%] md:w-60 dark:text-teal-50 text-teal-900 p-6 flex-col justify-between items-center">
       <div className="text-center sm:text-left">
           <IoMdSettings
             className="dark:text-orange-300 mx-auto sm:mx-0"
@@ -62,8 +62,7 @@ export default function Features() {
           <h3 className="title text-sm py-2 font-bold">24/7 Support</h3>
           <p className="text-sm">
             Our support team is available 24/7 to assist you with any inquiries
-            or issues you may have, ensuring you always have help when you need
-            it.
+            or issues you may have.
           </p>
         </div>
         <button
@@ -77,7 +76,7 @@ export default function Features() {
       <div className="hidden lg:block border-[1px] h-52 dark:border-orange-100 border-teal-900"></div>
 
       {/* <!-- card 4 --> */}
-      <div class="max-w-sm h-72 flex w-[80%] md:w-60 dark:text-teal-50 text-teal-900 p-6 flex-col justify-between items-center">
+      <div class="max-w-sm h-60 flex w-[80%] md:w-60 dark:text-teal-50 text-teal-900 p-6 flex-col justify-between items-center">
       <div className="text-center sm:text-left">
           <IoMdSettings
             className="dark:text-orange-300 mx-auto sm:mx-0"

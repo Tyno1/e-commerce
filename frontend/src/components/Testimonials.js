@@ -11,11 +11,11 @@ const Testimonials = () => {
     <div className="trending min-h-[70vh] w-[100%] my-20 py-10 bg-teal-900 ">
       <div className="flex flex-col items-center h-full ">
         <div className="px-6 leading-6">
-          <h3 className="text-5xl font-bold text-center leading-tight text-teal-950 dark:text-white">
+          <h3 className="text-5xl font-bold text-center leading-tight text-white">
             What Are <span className="dark:text-orange-300">Customers </span>
             Saying?
           </h3>
-          <p className="text-teal-950 text-center dark:text-white mt-2">
+          <p className="text-teal-950 text-center text-white mt-2">
             Here's a sneak peak at the beautiful things our customers are saying
             about our platform and services.
           </p>
@@ -153,9 +153,9 @@ const Testimonials = () => {
           </div>
         </div>
 
-        <div className="mt-10 text-2xl flex flex-row items-center gap-5 text-teal-100" >
+        <div className="mt-10 text-sm md:text-xl flex flex-row items-center gap-5 text-teal-100" >
           <p>Slide and Explore</p>
-          <CgArrowsHAlt size={60} />
+          <CgArrowsHAlt size={30} />
         </div>
       </div>
     </div>

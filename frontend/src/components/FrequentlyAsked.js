@@ -48,7 +48,7 @@ const FrequentlyAsked = () => {
   ];
 
   return (
-    <div className="Faq min-h-[70vh] w-[100%] my-20 py-10 md:px-20 bg-teal-950 flex flex-col items-center justify-center">
+    <div className="Faq min-h-[70vh] w-[100%] my-20 py-10 bg-teal-950 flex flex-col items-center justify-center">
       <div className="top-section flex flex-col items-center">
         <p>FAQ</p>
         <h3 className="text-5xl font-bold text-center leading-tight text-teal-950 dark:text-white">
