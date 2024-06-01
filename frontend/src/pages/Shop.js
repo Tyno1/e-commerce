@@ -93,8 +93,9 @@ export default function Shop() {
           </button>
         </form>
 
-        <div className="flex min-h-[100vh] w-full p-4 items-start">
-          <div className="w-[250px] hidden md:flex flex-col gap-4 ">
+        <div className="flex min-h-[100vh] w-full p-4 items-start flex-col md:flex-row items-center md:items-start gap-4 md:gap-0">
+
+          <div className="w-full md:w-[250px] flex flex-row md:flex-col gap-4 ">
             <Categories
               loading={loading}
               error={error}
@@ -109,7 +110,7 @@ export default function Shop() {
             />
           </div>
 
-          <div className="bg-gray-50 dark:bg-teal-950 rounded-xl ml-2 h-[100%] w-full md:w-[85%] border border-teal-900">
+          <div className="bg-gray-50 dark:bg-teal-950 rounded-xl md:ml-2 h-[100%] min-w-full md:min-w-0 flex-1 md:w-[85%] border border-teal-900">
             <DrugList
               setPostResp={setPostResp}
               AddToCart={AddToCart}
