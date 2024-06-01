@@ -77,14 +77,14 @@ export default function Shop() {
   return (
     <div className="pt-20 w-full">
       <div className="w-full min-h-[100vh] pt-10 flex flex-col items-center">
-        <form className="px-10 md:px-40 search-bar w-full md:min-w-[80%] lg:min-w-[70%] flex items-center">
+        <form className=" md:px-40 search-bar w-full md:min-w-[80%] lg:min-w-[70%] flex items-center">
           <input
-            className="flex grow rounded-lg placeholder:text-sm bg-teal-50 text-teal-950 px-4 py-3 focus:outline-teal-800 border-2 border-gray-300"
+            className="flex w-full grow rounded-lg placeholder:text-sm bg-teal-50 text-teal-950 px-4 py-3 focus:outline-teal-800 border-2 border-gray-300"
             type="text"
             name="search"
             value={searchInput}
             onChange={handleSearchChange}
-            placeholder="search drugs, categories, manufacturers"
+            placeholder="search drugs"
           />
           <button
             onClick={handleSearchSubmit}

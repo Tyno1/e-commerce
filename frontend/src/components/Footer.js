@@ -7,24 +7,29 @@ export default function Footer() {
     <footer className="w-full h-full">
       <div className="mx-auto px-4 py-16 sm:px-6 lg:px-8 dark:text-teal-50 mt-20">
         <div className="flex flex-col items-center gap-4 rounded-lg bg-teal-900 p-6 shadow-lg sm:flex-row sm:justify-between">
-          <strong className="text-xl sm:text-xl text-gray-50">
+          <strong className="text-sm text-center leading-normal md:text-xl text-gray-50">
             Stay Up to date with Medical Innovations!
           </strong>
 
-          <Link
-            className="inline-flex items-center gap-2 rounded-full border border-white bg-white px-8 py-3 text-teal-900 hover:bg-transparent hover:text-white focus:outline-none active:bg-white/90 active:text-teal-600"
+          <button
+            className="inline-flex items-center gap-2 rounded-2xl md:rounded-full border border-white bg-white px-2 md:px-8 py-3 text-teal-900 hover:bg-transparent hover:text-white focus:outline-none active:bg-white/90 active:text-teal-600"
             to="/"
           >
-            <span className="text-sm font-medium"> Let's Get Started</span>
+            <span
+              className="text-xs 
+            md:text-sm font-medium"
+            >
+              Let's Get Started
+            </span>
             <IoMdArrowRoundForward size={20} />
-          </Link>
+          </button>
         </div>
 
-        <div className="mt-16 flex items-start gap-20">
+        <div className="mt-16 flex items-start gap-10 justify-between">
           <div className="text-center sm:text-left">
-            <p className="text-lg font-medium">About Us</p>
+            <p className="text-lg font-sm">About Us</p>
 
-            <ul className="mt-8 space-y-4 text-sm">
+            <ul className="mt-8 space-y-4 text-xs md:text-sm">
               <li>
                 <Link className="transition" to="/">
                   Company History
@@ -52,9 +57,9 @@ export default function Footer() {
           </div>
 
           <div className="text-center sm:text-left">
-            <p className="text-lg font-medium ">Helpful Links</p>
+            <p className="text-lg text-sm md:font-medium ">Helpful Links</p>
 
-            <ul className="mt-8 space-y-4 text-sm">
+            <ul className="mt-8 space-y-4 text-xs md:text-sm">
               <li>
                 <Link className="transition" to="/">
                   FAQs
