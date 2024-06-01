@@ -47,7 +47,7 @@ const DrugList = ({
       )) ||
         (drugError && <div> {drugError?.message} </div>) ||
         (drugs && drugs?.length > 0 && (
-          <div className="druglist w-full h-full flex flex-row flex-wrap gap-4 p-2 items-center justify-around">
+          <div className="druglist w-full h-full flex flex-row flex-wrap gap-2 md:gap-4 items-center justify-around">
             {drugs?.map((drug) => (
               <DrugCard
                 setPostResp={setPostResp}
