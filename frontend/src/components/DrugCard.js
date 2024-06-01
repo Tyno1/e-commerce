@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const DrugCard = ({
   drug,
-  widthStyle = "w-36 md:w-48",
+  widthStyle = "w-40 md:w-48",
   setCategoryId,
   user,
   AddToCart,
