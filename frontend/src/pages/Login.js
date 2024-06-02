@@ -37,7 +37,7 @@ export default function Login() {
           />
         </div>
 
-        <div className="form md:p-20 h-full flex-1 w-full h-[100%] flex flex-col gap-10 items-center">
+        <div className="form p-6 md:p-20 h-full flex-1 w-full h-[100%] flex flex-col gap-10 items-center my-auto">
           <h2 className="text-5xl font-medium dark:text-orange-300 text-teal-900">
             Login
           </h2>
@@ -50,7 +50,7 @@ export default function Login() {
                 Email
               </label>
               <input
-                className="py-2 px-4 rounded-lg shadow-xl text-teal-900"
+                className="py-2 px-4 rounded-lg shadow-xl text-teal-900 focus:outline-none focus:ring focus:ring-teal-700"
                 name="email"
                 value={payload.email}
                 onChange={handleChange}
@@ -59,7 +59,7 @@ export default function Login() {
               />
             </div>
 
-            <div className="flex flex-col w-[100%] mb-6 gap-2">
+            <div className="flex flex-col w-[100%] mb-6 gap-2 focus:outline-none focus:ring focus:ring-teal-700">
               <label className="text-sm" htmlFor="email">
                 Password
               </label>
@@ -73,7 +73,7 @@ export default function Login() {
               />
             </div>
 
-            <button className="my-6 shadow-xl border border-2 bg-teal-900 dark:bg-teal-950 border-orange-300 text-orange-300 rounded-xl px-6 py-3 focus:outline-none active:bg-teal-800 active:text-orange-300">
+            <button className="my-6 shadow-xl border border-2 bg-teal-900 dark:bg-teal-950 dark:border-orange-300 text-orange-300 rounded-xl px-6 py-3 text-white dark:text-orange-300 rounded-xl px-6 py-3 focus:outline-none active:bg-teal-950 dark:active:text-orange-300">
               Login
             </button>
 
