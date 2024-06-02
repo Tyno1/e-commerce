@@ -5,7 +5,7 @@ import { IoMdArrowRoundForward } from "react-icons/io";
 export default function Footer() {
   return (
     <footer className="w-full h-full">
-      <div className="mx-auto px-4 py-16 sm:px-6 lg:px-8 dark:text-teal-50 mt-20">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 dark:text-teal-50 mt-20">
         <div className="flex flex-col items-center gap-4 rounded-lg bg-teal-900 p-6 shadow-lg sm:flex-row sm:justify-between">
           <strong className="text-sm text-center leading-normal md:text-xl text-gray-50">
             Stay Up to date with Medical Innovations!

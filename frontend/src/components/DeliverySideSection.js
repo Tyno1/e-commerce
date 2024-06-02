@@ -5,8 +5,8 @@ import { PiKeyReturnLight } from "react-icons/pi";
 
 export default function DeliverySideSection() {
   return (
-    <div className="ads-section w-[20%] hidden md:flex flex-col gap-6">
-      <div className="delivery bg-teal-900 p-3 h-full w-full flex rounded-2xl flex-col">
+    <div className="ads-section w-[20%] hidden md:flex flex-col gap-6 text-teal-900 dark:text-white">
+      <div className="delivery bg-white dark:bg-teal-900 dhadow-lg p-3 h-full w-full flex rounded-2xl flex-col">
         <div className="border-b w-full pb-2">
           <p>DELIVERY & RETURNS</p>
         </div>
@@ -20,7 +20,7 @@ export default function DeliverySideSection() {
           <p>Choose your location</p>
 
           <select
-            className="bg-teal-950 w-full p-3 rounded"
+            className="bg-white dark:bg-teal-950 shadow-lg  w-full p-3 rounded"
             name="country"
             id=""
           >
@@ -30,7 +30,7 @@ export default function DeliverySideSection() {
             <option value="france">France</option>
           </select>
 
-          <select className="bg-teal-950 w-full p-3 rounded" name="city" id="">
+          <select className="bg-white dark:bg-teal-950 shadow-lg w-full p-3 rounded" name="city" id="">
             <option value="london">London</option>
             <option value="cardiff">Cardiff</option>
             <option value="manchester">Manchester</option>
@@ -77,7 +77,7 @@ export default function DeliverySideSection() {
           </div>
         </div>
       </div>
-      <div className="delivery bg-teal-900 p-3 h-full w-full flex rounded-2xl flex-col gap-2git">
+      <div className="delivery bg-white dark:bg-teal-950 shadow-lg  p-3 h-full w-full flex rounded-2xl flex-col gap-2git">
         <div className="border-b w-full pb-2">
           <p>SELLER INFORMATON</p>
         </div>

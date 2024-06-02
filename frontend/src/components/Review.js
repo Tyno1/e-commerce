@@ -9,7 +9,7 @@ const Review = ({ reviews, reviewLoading, reviewError }) => {
       {reviews &&
         reviews.map((review) => (
           <div key={review._id} className="w-full flex flex-col gap-4">
-            <div className="w-full user-details flex flex-row text-stone-100">
+            <div className="w-full user-details flex flex-row">
               <div className="name-location-image flex items-center gap-6">
                 <div className="user-image w-14 h-14 rounded-3xl">
                   <img
@@ -18,13 +18,13 @@ const Review = ({ reviews, reviewLoading, reviewError }) => {
                     alt=""
                   />
                 </div>
-                <div className="user-name text-stone-100 text-lg font-bold">
+                <div className="user-name text-lg font-bold">
                   {review.userId.username}
                 </div>
               </div>
 
               <div className="rating mt-6 flex items-center gap-2 ml-auto">
-                <p className="text-stone-100 font-bold text-md hidden md:inline">
+                <p className="font-bold text-md hidden md:inline">
                   Ratings:
                 </p>
                 <p className="item-info text-sm text-amber-500 flex pt-1 pb-2">
@@ -35,7 +35,7 @@ const Review = ({ reviews, reviewLoading, reviewError }) => {
               </div>
             </div>
 
-            <div className="comment text-stone-100 text-justify">
+            <div className="comment text-justify">
               {review.comment}
             </div>
           </div>

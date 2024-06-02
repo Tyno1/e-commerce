@@ -144,14 +144,14 @@ export default function ProductPage() {
   }, [drug]);
 
   return (
-    <div className="pt-40 md:pt-20 w-full min-h-[100vh]">
-      {loading && <div> Loading...</div>}
+    <div className="pt-32 md:pt-20 w-full min-h-[100vh]">
+      {loading && <div className="p-10"> Loading...</div>}
       {error && <div> {error?.message} </div>}
       {drug && (
-        <div className="product-container p-10 h-full w-full flex items-start gap-4">
+        <div className="product-container md:py-10 p-2 md:px-10 h-full w-full flex items-start gap-4">
           <div className="main-section w-[75%] flex flex-col gap-10 flex-1 h-full">
             {/* first section */}
-            <div className="w-full h-full bg-teal-900 rounded-2xl flex p-4 gap-4">
+            <div className="w-full h-full dark:bg-teal-900 bg-white rounded-2xl flex p-4 gap-4 shadow-lg">
               <div className="imagesection hidden md:flex w-[25%] flex-col gap-4">
                 <div className="main-image h-[50vh]">
                   <img
@@ -174,14 +174,14 @@ export default function ProductPage() {
               </div>
               <div className="product-info w-[75%] flex flex-1 flex-col gap-3">
                 <div className="top-badge flex gap-2">
-                  <div className="bg-teal-950 text-sm p-2 rounded-lg">
+                  <div className="bg-teal-950 text-white text-sm p-2 rounded-lg">
                     Authorized seller
                   </div>
                   <div className="bg-orange-300 text-sm p-2 rounded-lg text-teal-950">
                     Non-refundable
                   </div>
                 </div>
-                <div className="main-info flex flex-col gap-2">
+                <div className="main-info flex flex-col gap-2 text-teal-950 dark:text-white">
                   <h2 className="drug-name text-2xl font-bold">
                     {drug.name.toUpperCase()}
                   </h2>
@@ -243,7 +243,7 @@ export default function ProductPage() {
                   {/* remember to link this button to fetch products by category */}
                   <button
                     onClick={() => handleByCategory(drug)}
-                    className="text-sm mt-2 bg-teal-950 p-2 rounded-xl"
+                    className="text-sm mt-2 text-white bg-teal-950 p-2 rounded-xl"
                   >
                     View more <span>{drug?.category.name}</span> Drugs
                   </button>
@@ -251,18 +251,18 @@ export default function ProductPage() {
               </div>
             </div>
             {/* second section */}
-            <div className="w-full h-full bg-teal-900 rounded-2xl flex flex-col p-4 gap-4">
-              <h3 className="text-2xl font-bold">Product details</h3>
+            <div className="w-full h-full bg-white shadow-lg dark:bg-teal-900 rounded-2xl flex flex-col p-4 gap-4">
+              <h3 className="text-2xl font-bold w-full border-b border-teal-700 dark:text-white">Product details</h3>
               <p>{drug.description}</p>
             </div>
 
             {/* third section */}
-            <div className="w-full h-full bg-teal-900 rounded-2xl flex flex-col p-4 gap-4">
+            <div className="w-full h-full bg-white shadow-lg dark:bg-teal-900 text-teal-900 dark:text-white rounded-2xl flex flex-col p-4 gap-4 ">
               <h3 className="text-2xl font-bold">Verified Customer Feedback</h3>
               <div className="flex flex-col md:flex-row gap-8 w-full items-start">
-                <div className="rating-section flex flex-col items-center w-full md:w-[30%]  h-72 border rounded-lg border-teal-800 p-4">
+                <div className="rating-section flex flex-col items-center w-full md:w-[30%] h-72 border rounded-lg border-teal-800 p-4">
                   <p className="mb-8">VERIFIED RATING </p>
-                  <div className="rating-box p-4 flex flex-col items-center gap-3 bg-teal-950 rounded-2xl">
+                  <div className="rating-box p-4 flex flex-col items-center gap-3 dark:bg-teal-950 bg-white shadow-lg rounded-2xl">
                     <p className="text-4xl font-bold">4/5</p>
 
                     <div className="star flex">
