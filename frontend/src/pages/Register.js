@@ -13,7 +13,7 @@ export default function Register() {
     firstName: "",
     lastName: "",
     email: "",
-    phoneNumber: 0,
+    phoneNumber: null,
     password: "",
   });
 
@@ -27,13 +27,10 @@ export default function Register() {
 
   const handleRegister = (e) => {
     e.preventDefault();
+
     let _payload = { ...payload };
     if (payload.password === confirmPassword) {
-      // Passwords match, proceed with form submission
-      // console.log("Passwords match!");
-
       if (_payload) {
-        console.log(_payload);
         register(_payload)
           .then((res) => {
             toast.success(res.data, { hideProgressBar: true });
@@ -78,7 +75,7 @@ export default function Register() {
                   First Name
                 </label>
                 <input
-                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700 "
+                  className="py-2 px-4 rounded-lg shadow-xl text-teal-950 focus:outline-none focus:ring focus:ring-teal-700 "
                   type="text"
                   placeholder="jane"
                   name="firstName"
@@ -92,7 +89,7 @@ export default function Register() {
                   Last Name
                 </label>
                 <input
-                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700 "
+                  className="py-2 px-4 rounded-lg shadow-xl text-teal-950 focus:outline-none focus:ring focus:ring-teal-700 "
                   type="text"
                   placeholder="Doe"
                   name="lastName"
@@ -107,7 +104,7 @@ export default function Register() {
                 Email
               </label>
               <input
-                className="py-2 px-4 rounded-lg shadow-xl focus:outline-none focus:ring focus:ring-teal-700 "
+                className="py-2 px-4 rounded-lg text-teal-950 shadow-xl focus:outline-none focus:ring focus:ring-teal-700 "
                 type="text"
                 placeholder="janedoe@mail.com"
                 value={payload.email}
@@ -124,7 +121,7 @@ export default function Register() {
                 Username
               </label>
               <input
-                className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700"
+                className="py-2 px-4 rounded-lg shadow-xl text-teal-950 focus:outline-none focus:ring focus:ring-teal-700"
                 type="text"
                 placeholder="jane232"
                 name="username"
@@ -138,7 +135,7 @@ export default function Register() {
                 Phone Number
               </label>
               <input
-                className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700 "
+                className="py-2 px-4 rounded-lg shadow-xl text-teal-950 focus:outline-none focus:ring focus:ring-teal-700 "
                 type="number"
                 placeholder="07******98"
                 value={payload.phoneNumber}
@@ -153,7 +150,7 @@ export default function Register() {
                   Password
                 </label>
                 <input
-                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700 "
+                  className="py-2 px-4 rounded-lg shadow-xl text-teal-950 focus:outline-none focus:ring focus:ring-teal-700 "
                   type="password"
                   placeholder="************"
                   value={payload.password}
@@ -167,7 +164,7 @@ export default function Register() {
                   Confirm Password
                 </label>
                 <input
-                  className="py-2 px-4 rounded-lg shadow-xl dark:text-teal-900 focus:outline-none focus:ring focus:ring-teal-700 "
+                  className="py-2 px-4 rounded-lg shadow-xl text-teal-950 focus:outline-none focus:ring focus:ring-teal-700 "
                   type="password"
                   placeholder="************"
                   value={confirmPassword}
@@ -176,7 +173,7 @@ export default function Register() {
               </div>
             </div>
 
-            <button className="shadow-xl border border-2 bg-teal-900 dark:bg-teal-950 border-orange-300 text-orange-300 rounded-xl px-6 py-3 focus:outline-none active:bg-teal-900 active:text-orange-300">
+            <button className="shadow-xl border border-2 bg-teal-900 dark:bg-teal-950 dark:border-orange-300 text-white dark:text-orange-300 rounded-xl px-6 py-3 focus:outline-none active:bg-teal-950 dark:active:text-orange-300">
               Register Account
             </button>
           </form>

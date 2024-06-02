@@ -1,93 +1,131 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { button, useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { GrCart } from "react-icons/gr";
-import { FaToggleOff, FaToggleOn } from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { FaToggleOff, FaToggleOn, FaBars, FaTimes } from "react-icons/fa";
 import { AuthContext } from "../contexts/AuthContext";
 import { CartContext } from "../contexts/CartContext";
 
 export default function Navbar({ toggleDarkMode, darkMode }) {
   const [loginOpen, setLoginOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const loginRef = useRef();
-  const mobileRef = useRef();
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { cartItem, localCart, setLocalCart } = useContext(CartContext);
+  const { cartItem } = useContext(CartContext);
 
-  useEffect(() => {
-    const menuHandler = (e) => {
-      if (!loginRef.current.contains(e.target)) {
-        setLoginOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", menuHandler);
+  const toggleMobileMenu = () => {
+    setMobileOpen(!mobileOpen);
+  };
+  const toggleLoginMenu = () => {
+    setLoginOpen(!loginOpen);
+  };
 
-    return () => {
-      document.removeEventListener("mousedown", menuHandler);
-    };
-  }, []);
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+  };
 
-  useEffect(() => {
-    const menuHandler = (e) => {
-      if (!mobileRef.current.contains(e.target)) {
-        setMobileOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", menuHandler);
-
-    return () => {
-      document.removeEventListener("mousedown", menuHandler);
-    };
-  }, []);
+  const closeLoginMenu = () => {
+    setLoginOpen(false);
+  };
 
   return (
     <nav className="navbar fixed left-0 right-0 py-7 px-7 flex items-center shadow-lg dark:bg-[rgba(4,47,46,0.65)] backdrop-blur-lg dark:text-orange-300 text-teal-900 z-50">
       <p className="font-bold text-3xl dark:text-orange-300 dark:hover:text-orange-600 text-teal-900">
-        <Link className="hidden lg:block " to="/">
+        <button className="hidden lg:block " onClick="/">
           Medi<span className="dark:text-orange-400 text-teal-600">kart</span>
-        </Link>
-        <Link className="lg:hidden" to="/">
+        </button>
+        <button className="lg:hidden" onClick="/">
           M.<span className="dark:text-orange-400 text-teal-600">k</span>
-        </Link>
+        </button>
       </p>
       {/* icons on mobile */}
       <div className="flex ml-auto gap-8 items-center">
-        <div
-          ref={mobileRef}
-          className="hamburger ml-auto md:hidden flex items-center"
-        >
-          <button onClick={() => setMobileOpen(!mobileOpen)}>
-            <GiHamburgerMenu size={25} />
+        <div className="hamburger ml-auto md:hidden flex items-center">
+          <button onClick={toggleMobileMenu}>
+            {
+              mobileOpen? (
+                <FaTimes size={25} />
+              ) : (
+                <FaBars size={25} />
+              )
+            }
           </button>
           {mobileOpen && (
             <div className="drop-down absolute top-20 right-0 z-50">
-              <button className="w-56 dark:bg-teal-900 bg-slate-50 px-5 py-2 rounded-sm shadow-2xl ">
-                <ul className="links flex flex-col items-end">
-                  <li className="py-2 border-solid mb-2 border-b-2 border-teal-800 dark:hover:text-orange-500 w-full flex ">
-                    <Link to="/">Home</Link>
+              <div className="w-[100vw] h-[100vh] dark:bg-teal-900 bg-slate-50 px-5 py-2 rounded-sm shadow-2xl">
+                <ul className="buttons flex flex-col items-center p-10 justify-between h-[50%] w-full">
+                  <li className="dark:hover:text-orange-500">
+                    <button
+                      onClick={() => {
+                        navigate("/");
+                        closeMobileMenu();
+                      }}
+                    >
+                      Home
+                    </button>
                   </li>
-                  <li className="py-2 border-solid mb-2 border-b-2 border-teal-800 dark:hover:text-orange-500 w-full flex">
-                    <Link to="/shop">Shop</Link>
+                  <li className="dark:hover:text-orange-500">
+                    <button
+                      onClick={() => {
+                        navigate("/shop");
+                        closeMobileMenu();
+                      }}
+                    >
+                      Shop
+                    </button>
                   </li>
-                  <li className="py-2 pb-4 border-solid mb-2 border-b-2 border-teal-800 dark:hover:text-orange-500 w-full flex">
-                    <Link to="/about">About Us</Link>
+                  <li className="dark:hover:text-orange-500">
+                    <button
+                      onClick={() => {
+                        navigate("/about");
+                        closeMobileMenu();
+                      }}
+                    >
+                      About Us
+                    </button>
                   </li>
-                  <li className="py-2 border-solid mb-2 border-b-2 border-teal-800 dark:hover:text-orange-500 w-full flex">
-                    <Link to="/contact">Contact Us</Link>
+                  <li className="dark:hover:text-orange-500">
+                    <button
+                      onClick={() => {
+                        navigate("/contact");
+                        closeMobileMenu();
+                      }}
+                    >
+                      Contact Us
+                    </button>
                   </li>
-                  <li className="py-2 border-solid mb-2 border-b-2 border-teal-800 dark:hover:text-orange-500 w-full flex">
-                    <Link to="/blog">Blog</Link>
+                  <li className="dark:hover:text-orange-500">
+                    <button
+                      onClick={() => {
+                        navigate("/blog");
+                        closeMobileMenu();
+                      }}
+                    >
+                      Blog
+                    </button>
                   </li>
-                  <li className="py-2 border-solid mb-2 border-b-2 border-teal-800 dark:hover:text-orange-500 w-full flex">
-                    <Link to="/login">Login</Link>
+                  <li className="dark:hover:text-orange-500">
+                    <button
+                      onClick={() => {
+                        navigate("/login");
+                        closeMobileMenu();
+                      }}
+                    >
+                      Login
+                    </button>
                   </li>
-                  <li className="py-2 dark:hover:text-orange-500 w-full flex">
-                    <Link to="/register">Register</Link>
+                  <li className="dark:hover:text-orange-500">
+                    <button
+                      onClick={() => {
+                        navigate("/register");
+                        closeMobileMenu();
+                      }}
+                    >
+                      Register
+                    </button>
                   </li>
                 </ul>
-              </button>
+              </div>
             </div>
           )}
         </div>
@@ -99,24 +137,24 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
         </button>
       </div>
       {/* icons on web */}
-      <ul className="hidden md:flex links ml-auto items-center">
+      <ul className="hidden md:flex buttons ml-auto items-center">
         <li className="pr-8 dark:hover:text-orange-500">
-          <Link to="/">Home</Link>
+          <button onClick="/">Home</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <Link to="/shop">Shop</Link>
+          <button onClick="/shop">Shop</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <Link to="/about">About Us</Link>
+          <button onClick="/about">About Us</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <Link to="/contact">Contact Us</Link>
+          <button onClick="/contact">Contact Us</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <Link to="/blog">Blog</Link>
+          <button onClick="/blog">Blog</button>
         </li>
-        <li className="profile pr-8 relative" ref={loginRef}>
-          <button onClick={() => setLoginOpen(!loginOpen)}>
+        <li className="profile pr-8 relative">
+          <button onClick={toggleLoginMenu}>
             <CgProfile size="2rem" />
           </button>
           {loginOpen && (
@@ -125,8 +163,13 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                 <div>
                   <ul>
                     <li className="pb-2 dark:hover:text-orange-500">
-                      <button>
-                        <Link to="/dashboard">Dashboard</Link>
+                      <button
+                        onClick={() => {
+                          navigate("/dashboard");
+                          closeLoginMenu();
+                        }}
+                      >
+                        Dashboard
                       </button>
                     </li>
                     <li className="pb-2 dark:hover:text-orange-500">
@@ -137,10 +180,16 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
               ) : (
                 <ul>
                   <li className="pb-2 border-solid border-b-2 border-teal-700 dark:hover:text-orange-500">
-                    <Link to="/login">Login</Link>
+                    <button onClick={() => {
+                        navigate("/login");
+                        closeLoginMenu();
+                      }}>Login</button>
                   </li>
                   <li className="pt-2 dark:hover:text-orange-500">
-                    <Link to="/register">Register</Link>
+                    <button onClick={() => {
+                        navigate("/register");
+                        closeLoginMenu();
+                      }}>Register</button>
                   </li>
                 </ul>
               )}
@@ -153,9 +202,9 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
             className="dark:hover:text-orange-500 relative"
           >
             <GrCart size={30} />
-            {localCart && localCart.length > 0 && (
+            {cartItem && cartItem.length > 0 && (
               <div className="absolute border-2 border-teal-700 flex items-center justify-center bg-white rounded-2xl w-7 h-7 top-[-14px] right-[-14px]">
-                <p className="font-bold text-teal-950">{localCart?.length}</p>
+                <p className="font-bold text-teal-950">{cartItem?.length}</p>
               </div>
             )}
           </button>
