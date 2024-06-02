@@ -7,10 +7,10 @@ const AppDownload = () => {
   return (
     <div className="download-app bg-white min-h-[70vh] w-[100%] px-4 pt-10 flex flex-col md:flex-row items-center relative">
       <div className="left-section h-full w-full md:w-[40%] text-teal-950 flex flex-col gap-4">
-        <h3 className="text-5xl font-bold leading-tight ">
+        <h3 className="text-3xl md:text-5xl font-bold leading-tight ">
           Download Our App to get the most out of it
         </h3>
-        <p>
+        <p className="text-xs md:text-sm">
           Experience the convenience of managing your health on the go with the
           MediKart mobile app. Whether you need to refill a prescription, browse
           our extensive range of medications, or read customer reviews, the

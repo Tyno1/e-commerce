@@ -24,7 +24,7 @@ const Testimonials = () => {
         <div className="cards mt-10 flex h-full w-full gap-10 overflow-x-auto">
           {/* card 1 */}
           <div className="bg-white p-8 min-w-[400px] md:min-w-[500px] min-h-[350px] rounded shadow-lg flex flex-col justify-between">
-            <p className="text text-teal-950 w-full">
+            <p className="text text-sm leading-relaxed text-teal-950 w-full">
               "This website has become my go-to for all my medical needs. The
               detailed product descriptions and customer reviews helped me make
               informed decisions. Plus, the customer service is exceptional –
@@ -41,10 +41,10 @@ const Testimonials = () => {
                   />
                 </div>
                 <div>
-                  <p className="client-name text-teal-950 text-lg font-bold">
+                  <p className="client-name text-teal-950 text-sm md:text-lg font-bold">
                     Katty Williams
                   </p>
-                  <p className="text-teal-950 text-sm">Wales, United Kingdom</p>
+                  <p className="text-teal-950 text-xs md:text-sm">Wales, United Kingdom</p>
                 </div>
               </div>
 
@@ -56,7 +56,7 @@ const Testimonials = () => {
 
           {/* card 2 */}
           <div className="bg-white p-8 min-w-[400px] md:min-w-[500px] min-h-[350px] rounded shadow-lg flex flex-col justify-between">
-            <p className="text text-teal-950 w-full">
+            <p className="text text-sm leading-relaxed text-teal-950 w-full">
               "I was skeptical about buying medical supplies online, but this
               site exceeded my expectations. The secure payment options and
               clear privacy policies gave me confidence in my purchase. Highly
@@ -72,10 +72,10 @@ const Testimonials = () => {
                   />
                 </div>
                 <div>
-                  <p className="client-name text-teal-950 text-lg font-bold">
+                  <p className="client-name text-teal-950 text-sm md:text-lg font-bold">
                     Frank Gazzelle
                   </p>
-                  <p className="text-teal-950 text-sm">
+                  <p className="text-teal-950 text-xs md:text-sm">
                     London, United Kingdom
                   </p>
                 </div>
@@ -89,7 +89,7 @@ const Testimonials = () => {
 
           {/* card 3 */}
           <div className="bg-white p-8 min-w-[400px] md:min-w-[500px] min-h-[350px] rounded shadow-lg flex flex-col justify-between">
-            <p className="text text-teal-950 w-full">
+            <p className="text text-sm leading-relaxed text-teal-950 w-full">
               "I am thoroughly impressed with this medical e-commerce platform.
               The range of products available is extensive, and I found
               everything I needed without any hassle. This site has made
@@ -105,10 +105,10 @@ const Testimonials = () => {
                   />
                 </div>
                 <div>
-                  <p className="client-name text-teal-950 text-lg font-bold">
+                  <p className="client-name text-teal-950 text-sm md:text-lg font-bold">
                     Amaka Freda
                   </p>
-                  <p className="text-teal-950 text-sm">
+                  <p className="text-teal-950 text-xs md:text-sm">
                     Liverpool, United Kingdom
                   </p>
                 </div>
@@ -122,8 +122,8 @@ const Testimonials = () => {
 
           {/* card 4 */}
           <div className="bg-white p-8 min-w-[400px] md:min-w-[500px] min-h-[350px] rounded shadow-lg flex flex-col justify-between">
-            <p className="text text-teal-950 w-full">
-              " The layout is intuitive, and finding the products I needed was
+            <p className="text text-sm leading-relaxed text-teal-950 w-full">
+              "The layout is intuitive, and finding the products I needed was
               simple. The detailed information and reviews on each product page
               helped me feel confident in my choices. "
             </p>
@@ -137,10 +137,10 @@ const Testimonials = () => {
                   />
                 </div>
                 <div>
-                  <p className="client-name text-teal-950 text-lg font-bold">
+                  <p className="client-name text-teal-950 text-sm md:text-lg font-bold">
                     Martin Gondales
                   </p>
-                  <p className="text-teal-950 text-sm">
+                  <p className="text-teal-950 text-xs md:text-sm">
                     Liverpool, United Kingdom
                   </p>
                 </div>

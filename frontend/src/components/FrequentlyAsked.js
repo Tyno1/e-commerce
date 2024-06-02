@@ -6,14 +6,14 @@ const FrequentlyAsked = () => {
     return (
       <div className="border border-teal-800 mb-2">
         <button
-          className="flex justify-between w-full text-left text-teal-950 font-bold p-4 px-10 bg-teal-50 hover:bg-teal-800 hover:text-teal-50 rounded-t-lg focus:outline-none"
+          className="flex justify-between w-full text-xs md:text-sm text-left text-teal-950 font-bold p-4 px-10 bg-teal-50 hover:bg-teal-800 hover:text-teal-50 rounded-t-lg focus:outline-none"
           onClick={onClick}
         >
           {title}
           <FaChevronDown size={20} />
         </button>
         <div
-          className={`transition-all text-white leading-normal text-lg duration-300 ease-in-out overflow-hidden ${
+          className={`transition-all text-white leading-normal text-xs md:text-sm duration-300 ease-in-out overflow-hidden ${
             isOpen ? "max-h-screen px-10 p-4" : "max-h-0"
           }`}
         >
@@ -48,7 +48,7 @@ const FrequentlyAsked = () => {
   ];
 
   return (
-    <div className="Faq min-h-[70vh] w-[100%] py-10 bg-teal-900 dark:bg-teal-950  flex flex-col items-center justify-center">
+    <div className="Faq min-h-[70vh] w-[100%] md:w-[60%] py-10 bg-teal-900 dark:bg-teal-950 flex flex-col items-center justify-center mx-auto">
       <div className="top-section flex flex-col items-center text-white">
         <p>FAQ</p>
         <h3 className="text-3xl md:text-5xl font-bold text-center leading-tight ">
