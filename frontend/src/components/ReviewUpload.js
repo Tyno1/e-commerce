@@ -51,20 +51,20 @@ const ReviewUpload = ({ refresh, sendReview, user, id }) => {
           <label className="text-2xl"> Comment</label>
           <textarea
             onChange={handleChange}
-            className="w-full p-4 text-teal-900 rounded-xl min-h-40"
+            className="w-full p-4 text-teal-900 bg-gray-200 rounded-xl min-h-40"
             type="text"
             name="comment"
             value={payload.comment}
           />
         </div>
 
-        <div className="flex flex-col md:flex-row items-start md:items-end w-full gap-4">
+        <div className="flex flex-col lg:flex-row items-start lg:items-end w-full gap-4">
           <div className="rating w-full flex flex-col gap-4">
             <label className=" text-2xl">Rating</label>
             <select
               onChange={handleChange}
               value={payload.rating}
-              className="w-full p-4 rounded-xl text-teal-950"
+              className="w-40 h-10 p-4 rounded-xl text-teal-950"
               name="rating"
             >
               <option value="1">1 Star</option>
@@ -75,7 +75,7 @@ const ReviewUpload = ({ refresh, sendReview, user, id }) => {
             </select>
           </div>
 
-          <button className="mt-4 text-white bg-amber-500 h-14 w-60 rounded-lg text-sm ">
+          <button className="mt-4 text-teal-900 font-medium bg-orange-300 min-w-40 h-10 rounded-lg text-sm ">
             Submit Review
           </button>
         </div>

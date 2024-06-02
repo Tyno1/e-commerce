@@ -33,8 +33,8 @@ export default function DashboardLayout() {
   };
 
   return (
-    <div className="w-full h-[90vh] pt-32 px-8 mb-20 flex flex-">
-      <div className="left-section h-full w-[350px] rounded-lg dark:bg-teal-950 border dark:border-teal-900 md:flex flex-col shadow-2xl">
+    <div className="w-full h-[90vh] pt-32 px-8 mb-20 flex flex-col md:flex-row">
+      <div className="left-section h-full w-full md:w-[350px] rounded-lg dark:bg-teal-950 border dark:border-teal-900 md:flex flex-col shadow-2xl">
         <DashboardMenuItem
           icon={<CgProfile size={28} />}
           selectedMenu={selectedMenu}

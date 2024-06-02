@@ -6,7 +6,7 @@ import { MdOutlineSupportAgent } from "react-icons/md";
 export default function Contact({ darkMode }) {
   return (
     <div className="contact pt-28">
-      <div className="max-w-screen-2xl w-[80%] mt-4 border-0 min-h-[100vh] mx-auto p-5 mb-10">
+      <div className="w-full md:w-[80%] mt-4 border-0 min-h-[100vh] mx-auto p-5 mb-10">
         <div className="flex justify-between flex-col">
           <div className="p-10 dark:text-teal-50 text-teal-900">
             <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight">

@@ -81,7 +81,6 @@ export default function ProductPage() {
             price: drug.price.amount,
             dose: drug.dose,
             manufacturer: drug.manufacturer,
-            
           },
         ];
       }
@@ -144,23 +143,23 @@ export default function ProductPage() {
   }, [drug]);
 
   return (
-    <div className="pt-32 md:pt-20 w-full min-h-[100vh]">
+    <div className="pt-24 md:pt-20 w-full min-h-[100vh]">
       {loading && <div className="p-10"> Loading...</div>}
       {error && <div> {error?.message} </div>}
       {drug && (
         <div className="product-container md:py-10 p-2 md:px-10 h-full w-full flex items-start gap-4">
           <div className="main-section w-[75%] flex flex-col gap-10 flex-1 h-full">
             {/* first section */}
-            <div className="w-full h-full dark:bg-teal-900 bg-white rounded-2xl flex p-4 gap-4 shadow-lg">
-              <div className="imagesection hidden md:flex w-[25%] flex-col gap-4">
-                <div className="main-image h-[50vh]">
+            <div className="w-full h-full dark:bg-teal-900 bg-white rounded-2xl flex flex-col md:flex-row p-4 gap-4 shadow-lg">
+              <div className="imagesection w-full md:w-[25%] flex flex-row md:flex-col items-center gap-4">
+                <div className="main-image w-56 h-56 md:w-full md:h-[50vh]">
                   <img
                     className="w-full h-full object-cover"
                     src={drug.imageUrl}
                     alt=""
                   />
                 </div>
-                <div className="other-images flex gap-2 p-4">
+                <div className="other-images md:flex flex gap-2 p-4">
                   <div className="container">
                     <img src={drug.imageUrl} alt="" />
                   </div>
@@ -174,10 +173,10 @@ export default function ProductPage() {
               </div>
               <div className="product-info w-[75%] flex flex-1 flex-col gap-3">
                 <div className="top-badge flex gap-2">
-                  <div className="bg-teal-950 text-white text-sm p-2 rounded-lg">
+                  <div className="bg-teal-950 text-white text-xs md:text-sm flex items-center p-2 rounded-lg">
                     Authorized seller
                   </div>
-                  <div className="bg-orange-300 text-sm p-2 rounded-lg text-teal-950">
+                  <div className="bg-orange-300 text-sm p-2  text-xs md:text-sm flex items-center rounded-lg text-teal-950">
                     Non-refundable
                   </div>
                 </div>
@@ -185,21 +184,23 @@ export default function ProductPage() {
                   <h2 className="drug-name text-2xl font-bold">
                     {drug.name.toUpperCase()}
                   </h2>
-                  <div>
-                    Manufacturer: <span>{drug.manufacturer}</span>
+                  <div className="text-xs md:text-sm flex flex-col xl:flex-row md:justify-between items-start">
+                    <p>
+                      Manufacturer: <span>{drug.manufacturer}</span>
+                    </p>
                     {/* remember to link this button to fetch products by manufacturer */}
-                    <button className="text-sm italic underline ml-10">
+                    <button className="italic underline ">
                       See More drugs from this manufacturer
                     </button>
                   </div>
 
                   <div className="price flex flex-wrap gap-4 items-center mt-4">
-                    <div className="promo-price font-bold text-6xl ">
+                    <div className="promo-price font-bold text-3xl md:text-6xl ">
                       <span className="">{drug?.price.currency && "£"}</span>
                       <span className=" ml-1">{drug.price.amount}</span>
                     </div>
 
-                    <div className="true-price text-4xl line-through">
+                    <div className="true-price text-lg md:text-4xl line-through">
                       <span>{drug?.price.currency && "£"}</span>
                       <span>
                         {Math.round(
@@ -209,7 +210,7 @@ export default function ProductPage() {
                         ) / 100}
                       </span>
                     </div>
-                    <div className="percentage-badge bg-teal-600 rounded-lg p-1 text-sm">
+                    <div className="percentage-badge text-white bg-teal-700 rounded-lg p-2 text-xs md:text-sm">
                       -20%
                     </div>
                   </div>
@@ -236,14 +237,14 @@ export default function ProductPage() {
 
                   <button
                     onClick={handleAddToCart}
-                    className="w-full bg-amber-500 p-4 rounded-2xl font-medium"
+                    className="w-full lg:w-[50%] bg-orange-300 p-4 text-teal-900 rounded-2xl font-bold"
                   >
                     ADD TO CART
                   </button>
                   {/* remember to link this button to fetch products by category */}
                   <button
                     onClick={() => handleByCategory(drug)}
-                    className="text-sm mt-2 text-white bg-teal-950 p-2 rounded-xl"
+                    className="w-full lg:w-[50%] text-sm mt-2 text-white bg-teal-950 p-4 rounded-xl"
                   >
                     View more <span>{drug?.category.name}</span> Drugs
                   </button>
@@ -252,8 +253,10 @@ export default function ProductPage() {
             </div>
             {/* second section */}
             <div className="w-full h-full bg-white shadow-lg dark:bg-teal-900 rounded-2xl flex flex-col p-4 gap-4">
-              <h3 className="text-2xl font-bold w-full border-b border-teal-700 dark:text-white">Product details</h3>
-              <p>{drug.description}</p>
+              <h3 className="text-2xl font-bold w-full border-b border-teal-700 dark:text-white">
+                Product details
+              </h3>
+              <p className="text-sm md:text-medium">{drug.description}</p>
             </div>
 
             {/* third section */}

@@ -31,10 +31,10 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
   return (
     <nav className="navbar fixed left-0 right-0 py-7 px-7 flex items-center shadow-lg dark:bg-[rgba(4,47,46,0.65)] backdrop-blur-lg dark:text-orange-300 text-teal-900 z-50">
       <p className="font-bold text-3xl dark:text-orange-300 dark:hover:text-orange-600 text-teal-900">
-        <button className="hidden lg:block " onClick="/">
+        <button className="hidden lg:block" onClick={() => navigate("/")}>
           Medi<span className="dark:text-orange-400 text-teal-600">kart</span>
         </button>
-        <button className="lg:hidden" onClick="/">
+        <button className="lg:hidden" onClick={() => navigate("/")}>
           M.<span className="dark:text-orange-400 text-teal-600">k</span>
         </button>
       </p>
@@ -42,13 +42,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
       <div className="flex ml-auto gap-8 items-center">
         <div className="hamburger ml-auto md:hidden flex items-center">
           <button onClick={toggleMobileMenu}>
-            {
-              mobileOpen? (
-                <FaTimes size={25} />
-              ) : (
-                <FaBars size={25} />
-              )
-            }
+            {mobileOpen ? <FaTimes size={25} /> : <FaBars size={25} />}
           </button>
           {mobileOpen && (
             <div className="drop-down absolute top-20 right-0 z-50">
@@ -139,19 +133,19 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
       {/* icons on web */}
       <ul className="hidden md:flex buttons ml-auto items-center">
         <li className="pr-8 dark:hover:text-orange-500">
-          <button onClick="/">Home</button>
+          <button onClick={()=> navigate("/")}>Home</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <button onClick="/shop">Shop</button>
+          <button onClick={()=> navigate("/shop")}>Shop</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <button onClick="/about">About Us</button>
+          <button onClick={()=> navigate("/about")}>About Us</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <button onClick="/contact">Contact Us</button>
+          <button onClick={()=> navigate("/contact")}>Contact Us</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <button onClick="/blog">Blog</button>
+          <button onClick={()=> navigate("/blog")}>Blog</button>
         </li>
         <li className="profile pr-8 relative">
           <button onClick={toggleLoginMenu}>
@@ -180,16 +174,24 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
               ) : (
                 <ul>
                   <li className="pb-2 border-solid border-b-2 border-teal-700 dark:hover:text-orange-500">
-                    <button onClick={() => {
+                    <button
+                      onClick={() => {
                         navigate("/login");
                         closeLoginMenu();
-                      }}>Login</button>
+                      }}
+                    >
+                      Login
+                    </button>
                   </li>
                   <li className="pt-2 dark:hover:text-orange-500">
-                    <button onClick={() => {
+                    <button
+                      onClick={() => {
                         navigate("/register");
                         closeLoginMenu();
-                      }}>Register</button>
+                      }}
+                    >
+                      Register
+                    </button>
                   </li>
                 </ul>
               )}

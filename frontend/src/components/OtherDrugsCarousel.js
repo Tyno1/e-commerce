@@ -10,7 +10,7 @@ export default function OtherDrugsCarousel({ drugsByCategory }) {
         {drugsByCategory && drugsByCategory?.length > 0 && (
           <div className="flex flex-row p-4 gap-4 overflow-x-auto rounded-2xl">
             {drugsByCategory?.map((drug) => (
-              <DrugCard widthStyle="min-w-40" key={drug._id} drug={drug} />
+              <DrugCard widthStyle="min-w-40 md:min-w-48" key={drug._id} drug={drug} />
             ))}
           </div>
         )}
