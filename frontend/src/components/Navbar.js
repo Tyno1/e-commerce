@@ -42,13 +42,13 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
       <div className="flex ml-auto gap-8 items-center">
         <div className="hamburger ml-auto md:hidden flex items-center">
           <button onClick={toggleMobileMenu}>
-            {mobileOpen ? <FaTimes size={25} /> : <FaBars size={25} />}
+            <FaBars size={25} />
           </button>
           {mobileOpen && (
-            <div className="drop-down absolute top-20 right-0 z-50">
-              <div className="w-[100vw] h-[90vh] dark:bg-teal-950 bg-slate-50 py-2 rounded-sm shadow-2xl flex items-center">
-                <ul className="buttons flex flex-col items-center py-10 h-[70%] w-full ">
-                  <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+            <div className="drop-down absolute top-0 right-0 z-50">
+              <div className="relative w-[100vw] h-[100vh] dark:bg-teal-950 bg-slate-50 py-2 rounded-sm shadow-2xl flex items-center ">
+                <ul className="buttons flex flex-col items-center py-10 h-[70%] w-full justify-center">
+                  <li className="dark:hover:text-white w-full flex items-center justify-center">
                     <button
                       className="hover:bg-teal-800 w-full h-full p-6"
                       onClick={() => {
@@ -59,7 +59,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                       Home
                     </button>
                   </li>
-                  <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                  <li className="dark:hover:text-white w-full flex items-center justify-center">
                     <button
                       className="hover:bg-teal-800 w-full h-full p-6"
                       onClick={() => {
@@ -70,7 +70,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                       Shop
                     </button>
                   </li>
-                  <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                  <li className="dark:hover:text-white w-full flex items-center justify-center">
                     <button
                       className="hover:bg-teal-800 w-full h-full p-6"
                       onClick={() => {
@@ -81,7 +81,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                       About Us
                     </button>
                   </li>
-                  <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                  <li className="dark:hover:text-white w-full flex items-center justify-center">
                     <button
                       className="hover:bg-teal-800 w-full h-full p-6"
                       onClick={() => {
@@ -92,7 +92,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                       Contact Us
                     </button>
                   </li>
-                  <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                  <li className="dark:hover:text-white w-full flex items-center justify-center">
                     <button
                       className="hover:bg-teal-800 w-full h-full p-6"
                       onClick={() => {
@@ -105,7 +105,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                   </li>
                   {user ? (
                     <>
-                      <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                      <li className="dark:hover:text-white w-full flex items-center justify-center">
                         <button
                           className="hover:bg-teal-800 w-full h-full p-6"
                           onClick={() => {
@@ -116,7 +116,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                           Dashboard
                         </button>
                       </li>
-                      <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                      <li className="dark:hover:text-white w-full flex items-center justify-center">
                         <button
                           className="hover:bg-teal-800 w-full h-full p-6"
                           onClick={() => logout()}
@@ -127,7 +127,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                     </>
                   ) : (
                     <>
-                      <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                      <li className="dark:hover:text-white w-full flex items-center justify-center">
                         <button
                           className="hover:bg-teal-800 w-full h-full p-6"
                           onClick={() => {
@@ -138,7 +138,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                           Login
                         </button>
                       </li>
-                      <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                      <li className="dark:hover:text-white w-full flex items-center justify-center">
                         <button
                           className="hover:bg-teal-800 w-full h-full p-6"
                           onClick={() => {
@@ -152,6 +152,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                     </>
                   )}
                 </ul>
+                <button className="absolute top-10 right-10" onClick={toggleMobileMenu}>{mobileOpen && <FaTimes size={25} />}</button>
               </div>
             </div>
           )}
