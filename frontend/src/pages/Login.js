@@ -27,8 +27,8 @@ export default function Login() {
     }
   };
   return (
-    <div className="login w-full h-[100vh] lg:px-60 px-4 pt-36 mb-20">
-      <div className="container bg-gray-50 dark:bg-teal-900 rounded-lg shadow-xl min-h-[400px] w-full flex mx-auto ">
+    <div className="login w-full h-[100vh] xl:px-60 px-4 pt-36 mb-20">
+      <div className="container bg-gray-50 dark:bg-teal-950 rounded-lg shadow-xl min-h-[400px] w-full flex mx-auto">
         <div className="rounded-lg min-h-[100%] hidden md:block w-[40%]">
           <img
             className="object-cover object-center h-[100%] w-full rounded-lg"
