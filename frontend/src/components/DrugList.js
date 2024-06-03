@@ -63,13 +63,13 @@ const DrugList = ({
       <div className="mx-auto flex gap-10 my-10">
         <button
           onClick={handlePreviousPage}
-          className="bg-teal-950 p-4 rounded-lg text-white"
+          className="bg-teal-950 p-4 rounded-lg text-white shadow-xl dark:bg-teal-950 border dark:border-orange-300 dark:active:bg-teal-900"
         >
           Previous Page
         </button>
         <button
           onClick={handleNextPage}
-          className="bg-teal-950 p-4 rounded-lg text-white dark:"
+          className="bg-teal-950 p-4 rounded-lg text-white shadow-xl dark:bg-teal-950 border dark:border-orange-300 dark:active:bg-teal-900"
         >
           Next Page
         </button>

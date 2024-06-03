@@ -1,6 +1,7 @@
 import React from "react";
 import { RiMedicineBottleFill } from "react-icons/ri";
 import { PiListChecksFill } from "react-icons/pi";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Categories({
   loading,
@@ -15,8 +16,18 @@ export default function Categories({
   getDrugs,
 }) {
   return (
-    <div className="categories bg-gray-50 dark:bg-teal-950 border border-teal-900 rounded-xl w-full md:min-h-[70vh]">
-      {loading && <div>Loading...</div>}
+    <div className="categories bg-gray-50 dark:bg-teal-950 border border-teal-900 rounded-xl w-full md:min-h-[70vh] flex flex-col items-center">
+      {(loading && (
+        <div className="mx-auto">
+          <ClipLoader
+            color="#000000"
+            loading={loading}
+            size={50}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      )) }
       {error && <div>{error?.message}</div>}
       {categories && (
         <div className="flex md:flex-col flex-wrap md:no-wrap gap-2 p-2">
@@ -43,7 +54,7 @@ export default function Categories({
                 setPageNumber(1);
               }}
               key={category._id}
-              className={`flex p-4 md:flex-1 text-xs md:text-sm rounded-lg gap-2 md:gap-4 h-10 md:min-h-14 items-center shadow-2xl hover:bg-teal-900 hover:text-teal-50 dark:hover:bg-teal-800  ${
+              className={`flex p-4 md:flex-1 text-xs md:text-sm rounded-lg gap-2 md:gap-4 h-10 md:min-h-14 items-center shadow-lg hover:bg-teal-900 hover:text-teal-50 dark:hover:bg-teal-800  ${
                 selectedCategory === category._id
                   ? "dark:bg-orange-300 dark:text-teal-950 text-teal-50 bg-teal-950"
                   : "text-teal-900 dark:text-teal-50 dark:bg-teal-950 bg-gray-100"
