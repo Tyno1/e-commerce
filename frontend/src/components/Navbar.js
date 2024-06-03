@@ -46,10 +46,11 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
           </button>
           {mobileOpen && (
             <div className="drop-down absolute top-20 right-0 z-50">
-              <div className="w-[100vw] h-[100vh] dark:bg-teal-900 bg-slate-50 px-5 py-2 rounded-sm shadow-2xl">
-                <ul className="buttons flex flex-col items-center p-10 justify-between h-[50%] w-full">
-                  <li className="dark:hover:text-orange-500">
+              <div className="w-[100vw] h-[90vh] dark:bg-teal-950 bg-slate-50 py-2 rounded-sm shadow-2xl flex items-center">
+                <ul className="buttons flex flex-col items-center py-10 h-[70%] w-full ">
+                  <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
                     <button
+                      className="hover:bg-teal-800 w-full h-full p-6"
                       onClick={() => {
                         navigate("/");
                         closeMobileMenu();
@@ -58,8 +59,9 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                       Home
                     </button>
                   </li>
-                  <li className="dark:hover:text-orange-500">
+                  <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
                     <button
+                      className="hover:bg-teal-800 w-full h-full p-6"
                       onClick={() => {
                         navigate("/shop");
                         closeMobileMenu();
@@ -68,8 +70,9 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                       Shop
                     </button>
                   </li>
-                  <li className="dark:hover:text-orange-500">
+                  <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
                     <button
+                      className="hover:bg-teal-800 w-full h-full p-6"
                       onClick={() => {
                         navigate("/about");
                         closeMobileMenu();
@@ -78,8 +81,9 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                       About Us
                     </button>
                   </li>
-                  <li className="dark:hover:text-orange-500">
+                  <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
                     <button
+                      className="hover:bg-teal-800 w-full h-full p-6"
                       onClick={() => {
                         navigate("/contact");
                         closeMobileMenu();
@@ -88,8 +92,9 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                       Contact Us
                     </button>
                   </li>
-                  <li className="dark:hover:text-orange-500">
+                  <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
                     <button
+                      className="hover:bg-teal-800 w-full h-full p-6"
                       onClick={() => {
                         navigate("/blog");
                         closeMobileMenu();
@@ -98,26 +103,54 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
                       Blog
                     </button>
                   </li>
-                  <li className="dark:hover:text-orange-500">
-                    <button
-                      onClick={() => {
-                        navigate("/login");
-                        closeMobileMenu();
-                      }}
-                    >
-                      Login
-                    </button>
-                  </li>
-                  <li className="dark:hover:text-orange-500">
-                    <button
-                      onClick={() => {
-                        navigate("/register");
-                        closeMobileMenu();
-                      }}
-                    >
-                      Register
-                    </button>
-                  </li>
+                  {user ? (
+                    <>
+                      <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                        <button
+                          className="hover:bg-teal-800 w-full h-full p-6"
+                          onClick={() => {
+                            navigate("/dashboard");
+                            closeLoginMenu();
+                          }}
+                        >
+                          Dashboard
+                        </button>
+                      </li>
+                      <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                        <button
+                          className="hover:bg-teal-800 w-full h-full p-6"
+                          onClick={() => logout()}
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                        <button
+                          className="hover:bg-teal-800 w-full h-full p-6"
+                          onClick={() => {
+                            navigate("/login");
+                            closeLoginMenu();
+                          }}
+                        >
+                          Login
+                        </button>
+                      </li>
+                      <li className="dark:hover:text-orange-500 w-full flex items-center justify-center">
+                        <button
+                          className="hover:bg-teal-800 w-full h-full p-6"
+                          onClick={() => {
+                            navigate("/register");
+                            closeMobileMenu();
+                          }}
+                        >
+                          Register
+                        </button>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>
@@ -133,19 +166,19 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
       {/* icons on web */}
       <ul className="hidden md:flex buttons ml-auto items-center">
         <li className="pr-8 dark:hover:text-orange-500">
-          <button onClick={()=> navigate("/")}>Home</button>
+          <button onClick={() => navigate("/")}>Home</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <button onClick={()=> navigate("/shop")}>Shop</button>
+          <button onClick={() => navigate("/shop")}>Shop</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <button onClick={()=> navigate("/about")}>About Us</button>
+          <button onClick={() => navigate("/about")}>About Us</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <button onClick={()=> navigate("/contact")}>Contact Us</button>
+          <button onClick={() => navigate("/contact")}>Contact Us</button>
         </li>
         <li className="pr-8 dark:hover:text-orange-500">
-          <button onClick={()=> navigate("/blog")}>Blog</button>
+          <button onClick={() => navigate("/blog")}>Blog</button>
         </li>
         <li className="profile pr-8 relative">
           <button onClick={toggleLoginMenu}>
