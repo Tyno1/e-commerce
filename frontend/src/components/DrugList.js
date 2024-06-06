@@ -18,15 +18,16 @@ const DrugList = ({
   const handlePreviousPage = () => {
     if (pageNumber > 1) {
       setPageNumber(pageNumber - 1);
+      window.scrollTo(0, 0);
     } else {
       toast("There are no more drugs to display", { hideProgressBar: true });
     }
   };
 
   const handleNextPage = () => {
-    console.log(meta);
     if (Number(meta?.currentPage) < meta?.pages) {
       setPageNumber(pageNumber + 1);
+      window.scrollTo(0, 0);
     } else {
       toast("There are no more drugs to display", { hideProgressBar: true });
     }
@@ -63,13 +64,13 @@ const DrugList = ({
       <div className="mx-auto flex gap-10 my-10">
         <button
           onClick={handlePreviousPage}
-          className="bg-teal-950 p-4 rounded-lg text-white shadow-xl dark:bg-teal-950 border dark:border-orange-300 dark:active:bg-teal-900"
+          className="bg-teal-900 p-4 rounded-lg text-white shadow-xl dark:bg-teal-950 border dark:border-orange-300 dark:active:bg-teal-900"
         >
           Previous Page
         </button>
         <button
           onClick={handleNextPage}
-          className="bg-teal-950 p-4 rounded-lg text-white shadow-xl dark:bg-teal-950 border dark:border-orange-300 dark:active:bg-teal-900"
+          className="bg-teal-900 p-4 rounded-lg text-white shadow-xl dark:bg-teal-950 border dark:border-orange-300 dark:active:bg-teal-900"
         >
           Next Page
         </button>

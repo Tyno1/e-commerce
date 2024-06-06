@@ -13,8 +13,6 @@ const Cart = () => {
     DeleteFromCart,
     getCartItemsByUserId,
     UpdateCart,
-    localCart,
-    setLocalCart,
   } = useContext(CartContext);
 
   const { user } = useContext(AuthContext);
@@ -33,7 +31,6 @@ const Cart = () => {
       }, delay);
     };
   };
-console.log(localCart);
   const handleDelete = (cartId) => (e) => {
     e.preventDefault();
     DeleteFromCart(cartId)
@@ -50,7 +47,7 @@ console.log(localCart);
       const { quantity, status, _id: cartId } = payload;
       UpdateCart({ quantity, status }, cartId)
         .then((res) => {
-          // setUpdateResp(res.data);
+          setUpdateResp(res.data);
           console.log(res.data);
         })
         .catch((err) => {
@@ -105,9 +102,7 @@ console.log(localCart);
                       <p className="text-sm md:text-medium">
                         Unit Price: <span>£</span>
                         <span className="ml-1">
-                          {Math.round(
-                            item?.drugId.price.amount * 100
-                          ) / 100}
+                          {Math.round(item?.drugId.price.amount * 100) / 100}
                         </span>
                       </p>
                       <p className="text-lg md:text-xl font-bold">

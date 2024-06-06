@@ -88,7 +88,7 @@ export default function Shop() {
           />
           <button
             onClick={handleSearchSubmit}
-            className="ml-4 shadow-xl border border-2 bg-teal-900 bg-teal-950 border-orange-300 text-teal-50 dark:text-orange-300 rounded-xl px-6 py-3 focus:outline-none active:bg-teal-800 active:text-orange-300"
+            className="ml-4 shadow-xl border border-2 bg-teal-900 bg-teal-950 dark:border-orange-300 text-teal-50 dark:text-orange-300 rounded-xl px-6 py-3 focus:outline-none active:bg-teal-800 active:text-orange-300"
           >
             <p className="hidden md:flex">search</p>
             <div className="search-icon md:hidden">

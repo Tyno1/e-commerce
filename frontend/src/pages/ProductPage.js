@@ -38,8 +38,10 @@ export default function ProductPage() {
     AddToCart,
     getCartItemsByUserId,
     setCartItem,
-    localCart,
-    setLocalCart,
+    cartItem,
+    tempPayload,
+    setTempPayload,
+    setCartCount,
   } = useContext(CartContext);
   const [postResp, setPostResp] = useState("");
   const [payload, setPayload] = useState({
@@ -58,53 +60,47 @@ export default function ProductPage() {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    setLocalCart((prevCart) => {
-      // Find if the item already exists in the cart
-      const existingItem = prevCart.find((item) => item.drugId === drug._id);
-
-      if (existingItem) {
-        // If the item exists, update its quantity
-        return prevCart.map((item) =>
-          item.drugId === drug._id
-            ? { ...item, quantity: item.quantity + optionValue }
-            : item
-        );
-      } else {
-        // If the item does not exist, add the new item
-        return [
-          ...prevCart,
-          {
-            drugId: drug._id,
-            quantity: optionValue,
-            name: drug.name,
-            drugType: drug.category.name,
-            price: drug.price.amount,
-            dose: drug.dose,
-            manufacturer: drug.manufacturer,
-          },
-        ];
-      }
+    setTempPayload({
+      payload: {
+        userId: user?.user?._id,
+        drugId: drug._id,
+        quantity: optionValue,
+      },
     });
-
-    // const newPayload = {
-    //   ...payload,
-    //   drugId: drug._id,
-    //   quantity: optionValue,
-    // };
-    // if (newPayload && newPayload.quantity !== 0) {
-    //   AddToCart(newPayload)
-    //     .then((res) => {
-    //       setPostResp(res.data);
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    // }
   };
+
+  useEffect(() => {}, []);
 
   const handleByCategory = (drug) => {
     navigate(`/shop?category=${drug.category._id}`);
   };
+
+  useEffect(() => {
+    if (tempPayload && tempPayload.payload.quantity) {
+      setCartCount(() => {
+        console.log(tempPayload);
+        let tempPayloadQuantity = tempPayload?.payload.quantity || 0;
+        let cartItemCount = 0;
+        if (cartItem && cartItem.length > 0) {
+          const sumOfQuantities = cartItem
+            .map((item) => item.quantity)
+            .reduce((acc, val) => acc + val, 0);
+          cartItemCount = sumOfQuantities;
+        }
+        return tempPayloadQuantity + cartItemCount;
+      });
+
+      AddToCart(tempPayload.payload)
+        .then((res) => {
+          setPostResp(res.data);
+          setTempPayload({ payload: {} });
+        })
+        .catch((err) => {
+          console.error(err.message);
+          setTempPayload({ payload: {} });
+        });
+    }
+  }, [tempPayload]);
 
   useEffect(() => {
     getDrugsByCategory(categoryId)
@@ -235,12 +231,15 @@ export default function ProductPage() {
                     />
                   </div>
 
-                  <button
-                    onClick={handleAddToCart}
-                    className="w-full lg:w-[50%] bg-orange-300 p-4 text-teal-900 rounded-2xl font-bold"
-                  >
-                    ADD TO CART
-                  </button>
+                  {cartItem && !cartItem.some((item) => item?.drugId._id === drug?._id) && (
+                    <button
+                    
+                      onClick={handleAddToCart}
+                      className="w-full lg:w-[50%] bg-orange-300 p-4 text-teal-900 rounded-2xl font-bold"
+                    >
+                      ADD TO CART
+                    </button>
+                  )}
                   {/* remember to link this button to fetch products by category */}
                   <button
                     onClick={() => handleByCategory(drug)}

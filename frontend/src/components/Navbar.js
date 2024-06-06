@@ -9,9 +9,10 @@ import { CartContext } from "../contexts/CartContext";
 export default function Navbar({ toggleDarkMode, darkMode }) {
   const [loginOpen, setLoginOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { cartItem } = useContext(CartContext);
+  const { cartCount } = useContext(CartContext);
 
   const toggleMobileMenu = () => {
     setMobileOpen(!mobileOpen);
@@ -166,7 +167,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
           {darkMode ? <FaToggleOff size={30} /> : <FaToggleOn size={30} />}
         </button>
         <button onClick={() => navigate("/cart")} className="md:hidden">
-          <GrCart size="2rem" />
+          <GrCart size={30} />
         </button>
       </div>
       {/* icons on web */}
@@ -188,7 +189,7 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
         </li>
         <li className="profile pr-8 relative">
           <button onClick={toggleLoginMenu}>
-            <CgProfile size="2rem" />
+            <CgProfile size={30} />
           </button>
           {loginOpen && (
             <div className="drop-down dark:bg-teal-900 bg-slate-50 px-5 py-2 rounded-xl shadow-lg absolute bottom--1 right-6 z-50">
@@ -243,9 +244,9 @@ export default function Navbar({ toggleDarkMode, darkMode }) {
             className="dark:hover:text-orange-500 relative"
           >
             <GrCart size={30} />
-            {cartItem && cartItem.length > 0 && (
+            {cartCount > 0 && (
               <div className="absolute border-2 border-teal-700 flex items-center justify-center bg-white rounded-2xl w-7 h-7 top-[-14px] right-[-14px]">
-                <p className="font-bold text-teal-950">{cartItem?.length}</p>
+                <p className="font-bold text-teal-950">{cartCount}</p>
               </div>
             )}
           </button>
