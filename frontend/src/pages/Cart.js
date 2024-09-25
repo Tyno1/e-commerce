@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import QuantityButton from "../components/QuantityButton";
 import { CartContext } from "../contexts/CartContext";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import PayButton from "../components/PayButton";
+import QuantityButtonCart from "../components/QuantityButtonCart";
 
 const Cart = () => {
-  const [optionValues, setOptionValues] = useState({});
   const {
     cartItem,
     setCartItem,
@@ -20,17 +19,6 @@ const Cart = () => {
   const [updateResp, setUpdateResp] = useState("");
   const navigate = useNavigate();
 
-  const debounce = (func, delay) => {
-    let timeoutId;
-    return function (...args) {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      timeoutId = setTimeout(() => {
-        func.apply(this, args);
-      }, delay);
-    };
-  };
   const handleDelete = (cartId) => (e) => {
     e.preventDefault();
     DeleteFromCart(cartId)
@@ -43,19 +31,14 @@ const Cart = () => {
   };
 
   const updateCartItems = (payload) => {
-    const debouncedRequest = debounce(() => {
-      const { quantity, status, _id: cartId } = payload;
-      UpdateCart({ quantity, status }, cartId)
-        .then((res) => {
-          setUpdateResp(res.data);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, 3000);
-
-    debouncedRequest();
+    const { quantity, status, _id: cartId } = payload;
+    UpdateCart({ quantity, status }, cartId)
+      .then((res) => {
+        setUpdateResp(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -117,12 +100,10 @@ const Cart = () => {
                   </div>
                 </div>
                 <form className="flex w-full items-center gap-4">
-                  <QuantityButton
+                  <QuantityButtonCart
                     handleDelete={handleDelete}
                     id={item._id}
                     initial={item.quantity}
-                    optionValues={optionValues}
-                    setOptionValues={setOptionValues}
                     updateCartItems={(data) =>
                       updateCartItems({ ...item, quantity: data })
                     }

@@ -17,7 +17,7 @@ export default function Categories({
 }) {
   return (
     <div className="categories bg-gray-50 dark:bg-teal-950 border border-teal-900 rounded-xl w-full md:min-h-[70vh] flex flex-col items-center">
-      {(loading && (
+      {loading && (
         <div className="mx-auto">
           <ClipLoader
             color="#000000"
@@ -27,7 +27,7 @@ export default function Categories({
             data-testid="loader"
           />
         </div>
-      )) }
+      )}
       {error && <div>{error?.message}</div>}
       {categories && (
         <div className="flex md:flex-col flex-wrap md:no-wrap gap-2 p-2">

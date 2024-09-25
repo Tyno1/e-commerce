@@ -111,6 +111,7 @@ export const DrugProvider = ({ children }) => {
     <DrugContext.Provider
       value={{
         loading,
+        setLoading,
         getDrugs,
         getDrugsById,
         getDrugsByName,
