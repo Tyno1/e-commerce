@@ -1,13 +1,20 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Modal from "./Modal";
 
 const ReviewUpload = ({ refresh, sendReview, user, id }) => {
   const [payload, setPayload] = useState({
-    userId: user?.user?._id,
+    userId: user?.user?._id || "",
     drugId: id,
     comment: "",
     rating: "",
   });
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const handleChange = (e) => {
     if (e.target.tagName.toLowerCase() === "textarea") {
@@ -29,6 +36,11 @@ const ReviewUpload = ({ refresh, sendReview, user, id }) => {
       return;
     }
 
+    if (!payload || payload.userId === "") {
+      setIsModalOpen(true);
+      return null;
+    }
+
     if (payload) {
       sendReview(payload)
         .then((res) => {
@@ -41,6 +53,7 @@ const ReviewUpload = ({ refresh, sendReview, user, id }) => {
         });
     }
   };
+
   return (
     <div className="add-review pt-8 w-full border-t border-teal-700">
       <form
@@ -80,6 +93,16 @@ const ReviewUpload = ({ refresh, sendReview, user, id }) => {
           </button>
         </div>
       </form>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <div className="flex flex-col">
+          <h2 className="text-black">Please log in to review a game</h2>
+          <p className="text-black">You must be logged in to review a game.</p>
+          <button className="btn btn-primary bg-teal-900 rounded-lg w-full h-full mt-6 p-4">
+            <Link className="w-full h-full" to="/login">Login </Link>
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };

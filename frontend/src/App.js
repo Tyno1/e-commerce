@@ -35,9 +35,9 @@ import Dashboard from "./pages/admin/Dashboard";
 import ReviewsModerator from "./pages/admin/ReviewsModerator";
 import DrugsManager from "./pages/admin/DrugsManager";
 import DrugsUpload from "./pages/admin/DrugsUpload";
-import ScrollToTop from "./components/ScrollToTop";
-import { ToastContainer } from "react-toastify";
 import GetHelp from "./pages/DashboardPages/GetHelp";
+
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(

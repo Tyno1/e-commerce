@@ -12,7 +12,7 @@ export default function About() {
             <h3 className="text-3xl md:text-5xl font-bold text-right leading-tight text-teal-950 dark:text-orange-300">
               About Us
             </h3>
-            <p className="leading-normal text-sm md:text-xl text-justify">
+            <p className="leading-normal text-sm md:text-normal text-justify">
               Welcome to MediKart, your trusted online pharmacy dedicated to
               making your healthcare needs easily accessible and convenient. We
               are committed to providing you with a seamless shopping experience
@@ -24,7 +24,7 @@ export default function About() {
             <h3 className="text-3xl md:text-5xl font-bold text-left leading-tight text-teal-950 dark:text-orange-300">
               Our Mission
             </h3>
-            <p className="leading-normal text-sm md:text-xl text-justify">
+            <p className="leading-normal text-sm md:text-normal text-justify">
               At MediKart, our mission is to simplify the process of getting
               your medications. We believe that everyone deserves easy and
               reliable access to healthcare products. Our goal is to make sure
@@ -57,7 +57,7 @@ export default function About() {
             <h3 className="text-3xl md:text-5xl font-bold text-right leading-tight text-teal-950 dark:text-orange-300">
               What We Offer
             </h3>
-            <ul className="leading-normal text-sm md:text-xl text-justify flex flex-col gap-10">
+            <ul className="leading-normal text-sm md:text-normal text-justify flex flex-col gap-6">
               <li>
                 <span className="font-bold text-orange-300">
                   Wide Selection of Medications:{" "}
@@ -99,7 +99,7 @@ export default function About() {
             <h3 className="text-3xl md:text-5xl font-bold text-left leading-tight text-teal-950 dark:text-orange-300">
               Our Commitment
             </h3>
-            <p className="leading-normal text-sm md:text-xl text-justify">
+            <p className="leading-normal text-sm md:text-normal text-justify">
               MediKart is dedicated to improving your health and wellbeing by
               making medication access as simple and stress-free as possible. We
               strive to offer the best in customer service and satisfaction,

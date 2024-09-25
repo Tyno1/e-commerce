@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { createContext, useState } from "react";
 
-
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -20,7 +19,7 @@ export const AuthProvider = ({ children }) => {
           localStorage.setItem("user", JSON.stringify(res.data));
           setUser(res.data);
           resolve(res);
-          window.location.replace("/dashboard")
+          window.location.replace("/dashboard");
         })
         .catch((err) => {
           reject(err);
@@ -42,10 +41,6 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  // useEffect(() => {
-  //   if (!user) {
-  //   }
-  // }, []);
 
   const logout = () => {
     localStorage.clear();

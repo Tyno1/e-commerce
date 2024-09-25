@@ -1,20 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
-import QuantityButton from "../components/QuantityButton";
 import { CartContext } from "../contexts/CartContext";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import PayButton from "../components/PayButton";
+import QuantityButtonCart from "../components/QuantityButtonCart";
 
 const Cart = () => {
-  const [optionValues, setOptionValues] = useState({});
   const {
     cartItem,
     setCartItem,
     DeleteFromCart,
     getCartItemsByUserId,
     UpdateCart,
-    localCart,
-    setLocalCart,
   } = useContext(CartContext);
 
   const { user } = useContext(AuthContext);
@@ -22,18 +19,6 @@ const Cart = () => {
   const [updateResp, setUpdateResp] = useState("");
   const navigate = useNavigate();
 
-  const debounce = (func, delay) => {
-    let timeoutId;
-    return function (...args) {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      timeoutId = setTimeout(() => {
-        func.apply(this, args);
-      }, delay);
-    };
-  };
-console.log(localCart);
   const handleDelete = (cartId) => (e) => {
     e.preventDefault();
     DeleteFromCart(cartId)
@@ -46,19 +31,14 @@ console.log(localCart);
   };
 
   const updateCartItems = (payload) => {
-    const debouncedRequest = debounce(() => {
-      const { quantity, status, _id: cartId } = payload;
-      UpdateCart({ quantity, status }, cartId)
-        .then((res) => {
-          // setUpdateResp(res.data);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, 3000);
-
-    debouncedRequest();
+    const { quantity, status, _id: cartId } = payload;
+    UpdateCart({ quantity, status }, cartId)
+      .then((res) => {
+        setUpdateResp(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -105,9 +85,7 @@ console.log(localCart);
                       <p className="text-sm md:text-medium">
                         Unit Price: <span>£</span>
                         <span className="ml-1">
-                          {Math.round(
-                            item?.drugId.price.amount * 100
-                          ) / 100}
+                          {Math.round(item?.drugId.price.amount * 100) / 100}
                         </span>
                       </p>
                       <p className="text-lg md:text-xl font-bold">
@@ -122,12 +100,10 @@ console.log(localCart);
                   </div>
                 </div>
                 <form className="flex w-full items-center gap-4">
-                  <QuantityButton
+                  <QuantityButtonCart
                     handleDelete={handleDelete}
                     id={item._id}
                     initial={item.quantity}
-                    optionValues={optionValues}
-                    setOptionValues={setOptionValues}
                     updateCartItems={(data) =>
                       updateCartItems({ ...item, quantity: data })
                     }
